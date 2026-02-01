@@ -16,11 +16,11 @@ function processOrder(event) {
         return;
     }
     
-    // Validate phone number
-    const phoneRegex = /^[0-9]{10,15}$/;
+    // Validate phone number - accept both 10 and 11 digit numbers
+    const phoneRegex = /^[0-9]{10,11}$/;
     const cleanPhone = phoneNumber.replace(/\D/g, '');
     if (!phoneRegex.test(cleanPhone)) {
-        showNotification('Please enter a valid phone number');
+        showNotification('Please enter a valid phone number (10 or 11 digits)');
         return;
     }
     
@@ -41,8 +41,13 @@ function processOrder(event) {
     let restaurantName = '';
     if (restaurant.includes('olas')) restaurantName = 'Olas Nutrition';
     else if (restaurant.includes('k-bakes')) restaurantName = 'K Bakes';
-    else if (restaurant.includes('beiroot')) restaurantName = 'Beiroot Restaurant';
+    else if (restaurant.includes('beiroot')) restaurantName = 'BEIROOT.NG';
     else if (restaurant.includes('sherrif')) restaurantName = 'Sherrif Mai Shayi';
+    else if (restaurant.includes('parfait')) restaurantName = 'ParfaitStop';
+    else if (restaurant.includes('item7')) restaurantName = 'Item7 Restaurant';
+    else if (restaurant.includes('sesede')) restaurantName = 'Sesede Food Restaurant';
+    else if (restaurant.includes('mac-dee')) restaurantName = 'MAC-DEE';
+    else if (restaurant.includes('alhaja')) restaurantName = 'Alhaja Habibat Restaurant';
     else restaurantName = 'Restaurant';
     
     // Format items list for WhatsApp
@@ -130,6 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remove all non-digits
             let value = e.target.value.replace(/\D/g, '');
             
+            // Limit to 11 digits maximum
+            if (value.length > 11) {
+                value = value.substring(0, 11);
+            }
+            
             // Format as Nigerian phone number
             if (value.length <= 3) {
                 value = value;
@@ -147,8 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Auto-format on focus out
         phoneInput.addEventListener('blur', function() {
             let value = this.value.replace(/\D/g, '');
-            if (value.length === 11 && value.startsWith('0')) {
-                this.value = `0${value.substring(1, 4)} ${value.substring(4, 7)} ${value.substring(7)}`;
+            if (value.length === 10 || value.length === 11) {
+                if (value.length === 11 && value.startsWith('0')) {
+                    this.value = `0${value.substring(1, 4)} ${value.substring(4, 7)} ${value.substring(7)}`;
+                } else if (value.length === 10) {
+                    this.value = `${value.substring(0, 3)} ${value.substring(3, 6)} ${value.substring(6)}`;
+                }
             }
         });
     }
