@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success - TapDosh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍽️</span>
+                <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#restaurants">Restaurants</a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Success Message -->
+    <section class="success-section">
+        <div class="container">
+            <div class="success-card">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Order Successfully Sent!</h1>
+                <p class="success-message">
+                    Your order has been sent to our TapDosh concierge via WhatsApp.
+                    We'll contact you shortly to confirm your order and provide payment details.
+                </p>
+                
+                <div class="next-steps">
+                    <h3>What Happens Next:</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Concierge Confirmation</h4>
+                                <p>Our concierge will reply to your WhatsApp message to confirm your order</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Delivery Fee Confirmation</h4>
+                                <p>You'll receive the exact delivery fee based on your location</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Payment Details</h4>
+                                <p>You'll receive bank transfer details or cash on delivery options</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Delivery Updates</h4>
+                                <p>You'll receive real-time updates on your delivery status</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="index.html#restaurants" class="btn btn-secondary">
+                        <i class="fas fa-utensils"></i> Order More
+                    </a>
+                    <a href="https://wa.me/2349031123030" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat with Concierge
+                    </a>
+                </div>
+                
+                <div class="contact-info">
+                    <h4>Need Help?</h4>
+                    <p>Contact our concierge on WhatsApp: <strong>+234 903 112 3030</strong></p>
+                    <p><i class="fas fa-clock"></i> Available: 8:00 AM - 12:00 AM Daily</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/cart.js"></script>
+    <script src="js/whatsapp-float.js"></script>
+    <style>
+        .success-section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            color: #4CAF50;
+            margin-bottom: 2rem;
+        }
+        
+        .success-card h1 {
+            color: #1A237E;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .next-steps {
+            text-align: left;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .next-steps h3 {
+            color: #1A237E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #1A237E;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            color: #1A237E;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content p {
+            color: #666;
+            margin: 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .contact-info h4 {
+            color: #1A237E;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .success-card {
+                padding: 2rem;
+            }
+            
+            .steps {
+                gap: 1rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                align-self: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .contact-info p {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>

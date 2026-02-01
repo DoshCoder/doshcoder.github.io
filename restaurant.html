@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant - TapDosh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/restaurant.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍽️</span>
+                <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#restaurants">Restaurants</a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Restaurant Header -->
+    <section class="restaurant-header">
+        <div class="container">
+            <div class="restaurant-header-content">
+                <a href="index.html#restaurants" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Restaurants
+                </a>
+                
+                <div class="restaurant-title-section">
+                    <div class="restaurant-badges">
+                        <span class="badge certified">
+                            <i class="fas fa-award"></i> Certified
+                        </span>
+                        <span class="badge">
+                            <i class="fas fa-bolt"></i> Fast
+                        </span>
+                        <span class="badge">
+                            <i class="fas fa-graduation-cap"></i> Student Favorite
+                        </span>
+                    </div>
+                    <h1 id="restaurantName">Restaurant Name</h1>
+                    <p class="restaurant-tagline" id="restaurantTagline">Tagline will appear here</p>
+                </div>
+                
+                <div class="restaurant-info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong>
+                            <p id="restaurantLocation">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Open Now</strong>
+                            <p id="restaurantHours">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-truck"></i>
+                        <div>
+                            <strong>Delivery Time</strong>
+                            <p id="restaurantDelivery">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Menu -->
+    <section class="menu-section">
+        <div class="container">
+            <div class="menu-header">
+                <h2>Menu</h2>
+                <div class="menu-categories" id="menuCategories">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="menu-grid" id="menuContainer">
+                <!-- Menu items will be loaded here -->
+            </div>
+            
+            <div class="menu-note">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Note:</strong> All orders are processed via WhatsApp. Add items to cart and proceed to checkout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="restaurant-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Order?</h2>
+                <p>Add items to your cart and chat with our TapDosh concierge on WhatsApp</p>
+                <div class="cta-buttons">
+                    <a href="cart.html" class="btn btn-primary" id="viewCartBtn">
+                        <i class="fas fa-shopping-cart"></i> View Cart (<span id="cartCountRestaurant">0</span>)
+                    </a>
+                    <a href="https://wa.me/2349031123030" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/restaurant.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/whatsapp-float.js"></script>
+    <script>
+    // Update cart count in restaurant page
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartCount = localStorage.getItem('tapdoshCart') 
+            ? JSON.parse(localStorage.getItem('tapdoshCart')).reduce((sum, item) => sum + item.quantity, 0)
+            : 0;
+        
+        const cartCountElement = document.getElementById('cartCountRestaurant');
+        if (cartCountElement) {
+            cartCountElement.textContent = cartCount;
+        }
+        
+        // View Cart button functionality
+        const viewCartBtn = document.getElementById('viewCartBtn');
+        if (viewCartBtn) {
+            viewCartBtn.addEventListener('click', function(e) {
+                if (cartCount === 0) {
+                    e.preventDefault();
+                    if (typeof showNotification === 'function') {
+                        showNotification('Your cart is empty! Add items first.');
+                    } else {
+                        alert('Your cart is empty! Add items first.');
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

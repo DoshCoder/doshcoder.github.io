@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TapDosh - Ilorin's Certified Food Concierge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍽️</span>
+                <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="#restaurants">Restaurants</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Certified Food Concierge</span>
+                </div>
+                <h1 class="hero-title">Ilorin's Only <span class="highlight">Certified Eats</span></h1>
+                <p class="hero-subtitle">Tested by Us, Trusted by You. Stop guessing - we only recommend the best restaurants near Alhikmah University.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Certified Restaurants</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">⚡</span>
+                        <span class="stat-label">Fast Delivery</span>
+                    </div>
+                </div>
+                <a href="#restaurants" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> Browse Restaurants
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Badges -->
+    <section class="badges-section">
+        <div class="container">
+            <h2 class="section-title">Our Certification Standards</h2>
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <div class="badge-icon">🏆</div>
+                    <h3>TapDosh Certified</h3>
+                    <p>Passed all quality tests</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">⚡</div>
+                    <h3>Speed Kitchen</h3>
+                    <p>Fast preparation time</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">👑</div>
+                    <h3>Quality Master</h3>
+                    <p>Exceptional taste</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">🎓</div>
+                    <h3>Student Favorite</h3>
+                    <p>Popular with students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certified Restaurants -->
+    <section id="restaurants" class="restaurants-section">
+        <div class="container">
+            <h2 class="section-title">Certified Restaurants Near Alhikmah University</h2>
+            <p class="section-subtitle">Every restaurant is rigorously tested before earning our seal of approval</p>
+            
+            <div class="restaurants-grid" id="restaurantsContainer">
+                <!-- Restaurants will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How TapDosh Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Browse Certified</h3>
+                    <p>Choose from our tested and approved restaurants</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <h3>Add to Cart</h3>
+                    <p>Select items and build your order</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Order via WhatsApp</h3>
+                    <p>Complete your order and chat with our concierge</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <section class="whatsapp-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h2>Your Personal Food Concierge</h2>
+                <p>Message us on WhatsApp for personalized recommendations, order updates, or any questions</p>
+                <a href="https://wa.me/2349031123030?text=Hello%20TapDosh!%20I'd%20like%20to%20order%20food." class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat with Concierge
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <span class="logo-icon">🍽️</span>
+                        <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+                    </div>
+                    <p class="footer-tagline">Ilorin's Trusted Food Concierge</p>
+                    <p>We certify restaurants so you don't have to guess.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>For Students</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-graduation-cap"></i> Quality Guaranteed</a></li>
+                        <li><a href="#"><i class="fas fa-moon"></i> Late Night Delivery</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Group Orders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +234 903 112 3030</li>
+                        <li><i class="fas fa-clock"></i> 8:00 AM - 12:00 AM</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Alhikmah University Area</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TapDosh. All rights reserved. | "Tested by Us, Trusted by You"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/whatsapp-float.js"></script>
+</body>
+</html>
