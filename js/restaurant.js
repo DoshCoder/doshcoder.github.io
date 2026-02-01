@@ -268,7 +268,7 @@ function getRestaurantData() {
         'beiroot-restaurant': {
             name: 'Beiroot Restaurant',
             tagline: 'Premium Sandwiches & Wraps',
-            location: 'Tanke, Near Alhikmah University',
+            location: 'Near Alhikmah University',
             deliveryTime: '35-50 minutes',
             hours: '9:00 AM - 11:00 PM',
             badges: ['🏆 Certified', '🥪 Premium', '⚡ Fast', '🎓 Student Favorite'],
@@ -391,6 +391,58 @@ function getRestaurantData() {
                     description: 'Large chicken wrap/shawarma',
                     price: 5200,
                     category: 'wraps'
+                }
+            ]
+        },
+        'sherrif-mai-shayi': {
+            name: 'Sherrif Mai Shayi',
+            tagline: 'Tea, Bread & Indomie Specialist',
+            location: 'Near Alhikmah University, Ilorin',
+            deliveryTime: '20-35 minutes',
+            hours: '6:00 AM - 12:00 AM',
+            badges: ['🏆 Certified', '🌙 Late Night', '🎓 Student Favorite', '☕ Tea'],
+            menu: [
+                {
+                    id: 51,
+                    name: 'Small Indomie',
+                    description: 'Small portion of indomie noodles',
+                    price: 400,
+                    category: 'indomie'
+                },
+                {
+                    id: 52,
+                    name: 'Big Indomie',
+                    description: 'Large portion of indomie noodles',
+                    price: 600,
+                    category: 'indomie'
+                },
+                {
+                    id: 53,
+                    name: 'Egg',
+                    description: 'Fried or boiled egg',
+                    price: 300,
+                    category: 'extras'
+                },
+                {
+                    id: 54,
+                    name: 'Medium Size Bread & Egg',
+                    description: 'Medium bread with egg',
+                    price: 1000,
+                    category: 'bread-egg'
+                },
+                {
+                    id: 55,
+                    name: 'Big Size Bread & Egg',
+                    description: 'Large bread with egg',
+                    price: 1200,
+                    category: 'bread-egg'
+                },
+                {
+                    id: 56,
+                    name: 'Small Size Bread & Egg',
+                    description: 'Small bread with egg',
+                    price: 700,
+                    category: 'bread-egg'
                 }
             ]
         }
@@ -532,10 +584,46 @@ function addMenuItemToCart(itemId) {
     
     if (item) {
         // Add to cart with quantity 1
-        addToCart(item, restaurantId);
+        if (typeof addToCart === 'function') {
+            addToCart(item, restaurantId);
+        } else {
+            // Fallback to direct cart manipulation
+            const cart = JSON.parse(localStorage.getItem('tapdoshCart')) || [];
+            const existingItemIndex = cart.findIndex(cartItem => 
+                cartItem.id === item.id && cartItem.restaurant === restaurantId
+            );
+            
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    ...item,
+                    restaurant: restaurantId,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('tapdoshCart', JSON.stringify(cart));
+            localStorage.setItem('tapdoshCurrentRestaurant', restaurantId);
+            
+            // Update cart count
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElements.forEach(element => {
+                element.textContent = totalItems;
+            });
+            
+            // Show notification
+            if (typeof showNotification === 'function') {
+                showNotification(`${item.name} added to cart!`);
+            }
+        }
         
         // Update the display
         displayRestaurantMenu(restaurant);
+        
+        // Update cart count in restaurant page
+        updateCartCountRestaurant();
     }
 }
 
@@ -550,17 +638,62 @@ function updateMenuItemQuantity(itemId, newQuantity) {
     const item = restaurant.menu.find(menuItem => menuItem.id === itemId);
     
     if (item) {
-        if (newQuantity <= 0) {
-            // Remove from cart
-            removeFromCart(itemId, restaurantId);
+        if (typeof updateQuantity === 'function') {
+            if (newQuantity <= 0) {
+                // Remove from cart
+                removeFromCart(itemId, restaurantId);
+            } else {
+                // Update quantity in cart
+                updateQuantity(itemId, restaurantId, newQuantity);
+            }
         } else {
-            // Update quantity in cart
-            updateQuantity(itemId, restaurantId, newQuantity);
+            // Fallback to direct cart manipulation
+            const cart = JSON.parse(localStorage.getItem('tapdoshCart')) || [];
+            const itemIndex = cart.findIndex(cartItem => 
+                cartItem.id === itemId && cartItem.restaurant === restaurantId
+            );
+            
+            if (itemIndex > -1) {
+                if (newQuantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                } else {
+                    cart[itemIndex].quantity = newQuantity;
+                }
+                
+                localStorage.setItem('tapdoshCart', JSON.stringify(cart));
+                
+                // Update cart count
+                const cartCountElements = document.querySelectorAll('.cart-count');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountElements.forEach(element => {
+                    element.textContent = totalItems;
+                });
+            }
         }
         
         // Update the display
         displayRestaurantMenu(restaurant);
+        
+        // Update cart count in restaurant page
+        updateCartCountRestaurant();
     }
+}
+
+// Function to update cart count in restaurant page
+function updateCartCountRestaurant() {
+    const cart = JSON.parse(localStorage.getItem('tapdoshCart')) || [];
+    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    const cartCountElement = document.getElementById('cartCountRestaurant');
+    if (cartCountElement) {
+        cartCountElement.textContent = cartCount;
+    }
+    
+    // Also update navigation cart count
+    const navCartElements = document.querySelectorAll('.cart-count');
+    navCartElements.forEach(element => {
+        element.textContent = cartCount;
+    });
 }
 
 // Initialize restaurant page
@@ -577,9 +710,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Save restaurant to localStorage for cart page
         localStorage.setItem('tapdoshCurrentRestaurant', restaurant.id);
+        
+        // Update cart count
+        updateCartCountRestaurant();
     }
+    
+    // Listen for cart updates from other pages
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'tapdoshCart') {
+            updateCartCountRestaurant();
+            if (restaurant) {
+                displayRestaurantMenu(restaurant);
+            }
+        }
+    });
 });
 
 // Export functions for use in HTML
 window.addMenuItemToCart = addMenuItemToCart;
 window.updateMenuItemQuantity = updateMenuItemQuantity;
+window.updateCartCountRestaurant = updateCartCountRestaurant;

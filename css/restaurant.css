@@ -108,6 +108,11 @@
 .menu-section {
     padding: 4rem 0;
     background: var(--light);
+    transition: var(--transition);
+}
+
+body.dark-mode .menu-section {
+    background: #1a202c;
 }
 
 .menu-header {
@@ -138,8 +143,21 @@
     transition: var(--transition);
 }
 
+body.dark-mode .category-btn {
+    background: #2d3748;
+    border: 2px solid #4a5568;
+    color: #e2e8f0;
+}
+
 .category-btn:hover,
 .category-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+body.dark-mode .category-btn:hover,
+body.dark-mode .category-btn.active {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
@@ -157,7 +175,11 @@
     padding: 1.5rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    position: relative;
+}
+
+body.dark-mode .menu-item {
+    background: #2d3748;
+    color: #e2e8f0;
 }
 
 .menu-item:hover {
@@ -189,11 +211,19 @@
     margin-left: 1rem;
 }
 
+body.dark-mode .menu-item-price {
+    background: rgba(255, 215, 0, 0.2);
+}
+
 .menu-item-description {
     color: var(--gray);
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     line-height: 1.5;
+}
+
+body.dark-mode .menu-item-description {
+    color: #cbd5e0;
 }
 
 .menu-item-actions {
@@ -211,6 +241,10 @@
     padding: 4px;
 }
 
+body.dark-mode .quantity-control {
+    background: #4a5568;
+}
+
 .quantity-btn {
     background: white;
     border: none;
@@ -226,7 +260,17 @@
     transition: var(--transition);
 }
 
+body.dark-mode .quantity-btn {
+    background: #2d3748;
+    color: #e2e8f0;
+}
+
 .quantity-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+body.dark-mode .quantity-btn:hover {
     background: var(--primary);
     color: white;
 }
@@ -235,6 +279,11 @@
     min-width: 30px;
     text-align: center;
     font-weight: 600;
+    color: var(--dark);
+}
+
+body.dark-mode .quantity {
+    color: #e2e8f0;
 }
 
 .add-to-cart {
@@ -269,6 +318,12 @@
     align-items: center;
     gap: 1rem;
     box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+body.dark-mode .menu-note {
+    background: #2d3748;
+    color: #e2e8f0;
 }
 
 .menu-note i {
@@ -285,6 +340,11 @@
     padding: 4rem 0;
     background: white;
     text-align: center;
+    transition: var(--transition);
+}
+
+body.dark-mode .restaurant-cta {
+    background: #1a202c;
 }
 
 .restaurant-cta h2 {

@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -62,11 +67,11 @@
                             </div>
                             <div class="summary-row">
                                 <span>Tap Fee</span>
-                                <span id="tapFee">₦50</span>
+                                <span id="tapFee">Will be determined by number of take-away/order wraps</span>
                             </div>
                             <div class="summary-row total">
                                 <span>Total</span>
-                                <span id="totalAmount">₦50</span>
+                                <span id="totalAmount">₦0</span>
                             </div>
                         </div>
                         
@@ -78,6 +83,10 @@
                         
                         <p class="delivery-note">
                             <i class="fas fa-info-circle"></i> Delivery fee will be determined by your location and communicated via WhatsApp
+                        </p>
+                        
+                        <p class="delivery-note">
+                            <i class="fas fa-info-circle"></i> Tap fee will be determined by number of take-away/order wraps
                         </p>
                         
                         <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>
@@ -137,6 +146,10 @@
                         <i class="fas fa-info-circle"></i> Your delivery fee will be determined by your location. Our representative will respond with the exact delivery fee.
                     </p>
                     
+                    <p class="note">
+                        <i class="fas fa-info-circle"></i> Your tap fee will be determined by number of take-away/order wraps. Our representative will respond with the exact tap fee.
+                    </p>
+                    
                     <button type="submit" class="btn btn-whatsapp btn-block">
                         <i class="fab fa-whatsapp"></i> Continue to WhatsApp
                     </button>
@@ -152,5 +165,12 @@
     <script src="js/cart.js"></script>
     <script src="js/order.js"></script>
     <script src="js/whatsapp-float.js"></script>
+    <script>
+        // Update copyright year
+        const yearElements = document.querySelectorAll('#currentYear');
+        yearElements.forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>

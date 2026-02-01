@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -56,15 +61,15 @@
                         <div class="step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>Delivery Fee Confirmation</h4>
-                                <p>You'll receive the exact delivery fee based on your location</p>
+                                <h4>Delivery & Tap Fee Confirmation</h4>
+                                <p>You'll receive the exact delivery fee based on your location and tap fee based on take-away/order wraps</p>
                             </div>
                         </div>
                         <div class="step">
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <h4>Payment Details</h4>
-                                <p>You'll receive bank transfer details or cash on delivery options</p>
+                                <p>You'll receive bank transfer details (payment required before order is placed)</p>
                             </div>
                         </div>
                         <div class="step">
@@ -84,14 +89,14 @@
                     <a href="index.html#restaurants" class="btn btn-secondary">
                         <i class="fas fa-utensils"></i> Order More
                     </a>
-                    <a href="https://wa.me/2349031123030" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/2349050270392" class="btn btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i> Chat with Concierge
                     </a>
                 </div>
                 
                 <div class="contact-info">
                     <h4>Need Help?</h4>
-                    <p>Contact our concierge on WhatsApp: <strong>+234 903 112 3030</strong></p>
+                    <p>Contact our concierge on WhatsApp: <strong>+234 905 027 0392</strong></p>
                     <p><i class="fas fa-clock"></i> Available: 8:00 AM - 12:00 AM Daily</p>
                 </div>
             </div>
@@ -109,6 +114,10 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
+        body.dark-mode .success-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
         .success-card {
             background: white;
             border-radius: 12px;
@@ -117,6 +126,11 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             max-width: 800px;
             margin: 0 auto;
+        }
+        
+        body.dark-mode .success-card {
+            background: #2d3748;
+            color: #e2e8f0;
         }
         
         .success-icon {
@@ -130,6 +144,10 @@
             margin-bottom: 1rem;
         }
         
+        body.dark-mode .success-card h1 {
+            color: #90cdf4;
+        }
+        
         .success-message {
             color: #666;
             font-size: 1.1rem;
@@ -140,6 +158,10 @@
             margin-right: auto;
         }
         
+        body.dark-mode .success-message {
+            color: #cbd5e0;
+        }
+        
         .next-steps {
             text-align: left;
             margin: 3rem 0;
@@ -148,10 +170,18 @@
             border-radius: 12px;
         }
         
+        body.dark-mode .next-steps {
+            background: #4a5568;
+        }
+        
         .next-steps h3 {
             color: #1A237E;
             margin-bottom: 1.5rem;
             text-align: center;
+        }
+        
+        body.dark-mode .next-steps h3 {
+            color: #90cdf4;
         }
         
         .steps {
@@ -185,9 +215,17 @@
             margin-bottom: 0.5rem;
         }
         
+        body.dark-mode .step-content h4 {
+            color: #90cdf4;
+        }
+        
         .step-content p {
             color: #666;
             margin: 0;
+        }
+        
+        body.dark-mode .step-content p {
+            color: #cbd5e0;
         }
         
         .cta-buttons {
@@ -203,9 +241,17 @@
             border-top: 1px solid #eee;
         }
         
+        body.dark-mode .contact-info {
+            border-top: 1px solid #4a5568;
+        }
+        
         .contact-info h4 {
             color: #1A237E;
             margin-bottom: 1rem;
+        }
+        
+        body.dark-mode .contact-info h4 {
+            color: #90cdf4;
         }
         
         .contact-info p {
@@ -215,6 +261,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+        
+        body.dark-mode .contact-info p {
+            color: #cbd5e0;
         }
         
         @media (max-width: 768px) {

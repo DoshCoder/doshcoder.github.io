@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -43,7 +48,7 @@
                 <p class="hero-subtitle">Tested by Us, Trusted by You. Stop guessing - we only recommend the best restaurants near Alhikmah University.</p>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">3</span>
+                        <span class="stat-number">4</span>
                         <span class="stat-label">Certified Restaurants</span>
                     </div>
                     <div class="stat">
@@ -145,7 +150,7 @@
                 </div>
                 <h2>Your Personal Food Concierge</h2>
                 <p>Message us on WhatsApp for personalized recommendations, order updates, or any questions</p>
-                <a href="https://wa.me/2349031123030?text=Hello%20TapDosh!%20I'd%20like%20to%20order%20food." class="btn btn-whatsapp" target="_blank">
+                <a href="https://wa.me/2349050270392?text=Hello%20TapDosh!%20I'd%20like%20to%20order%20food." class="btn btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i> Chat with Concierge
                 </a>
             </div>
@@ -175,14 +180,14 @@
                 <div class="footer-col">
                     <h3>Contact</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +234 903 112 3030</li>
+                        <li><i class="fas fa-phone"></i> +234 905 027 0392</li>
                         <li><i class="fas fa-clock"></i> 8:00 AM - 12:00 AM</li>
                         <li><i class="fas fa-map-marker-alt"></i> Alhikmah University Area</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TapDosh. All rights reserved. | "Tested by Us, Trusted by You"</p>
+                <p>&copy; <span id="currentYear"></span> TapDosh. All rights reserved. | "Tested by Us, Trusted by You"</p>
             </div>
         </div>
     </footer>
@@ -190,5 +195,9 @@
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/whatsapp-float.js"></script>
+    <script>
+        // Update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

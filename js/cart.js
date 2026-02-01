@@ -22,6 +22,9 @@ function updateCartCount() {
         element.textContent = totalItems;
     });
     
+    // Update cart count in localStorage for cross-page updates
+    localStorage.setItem('tapdoshCartCount', totalItems);
+    
     return totalItems;
 }
 
@@ -133,14 +136,10 @@ function clearCart() {
 function calculateCartTotals() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
-    // Tap fee of ₦50 per order
-    const tapFee = 50;
-    
-    const total = subtotal + tapFee;
+    const total = subtotal;
     
     return {
         subtotal,
-        tapFee,
         total
     };
 }
@@ -189,7 +188,10 @@ function displayCartItems() {
             address = 'Near Alhikmah University, Ilorin';
         } else if (currentRestaurant.includes('beiroot')) {
             name = 'Beiroot Restaurant';
-            address = 'Tanke, Near Alhikmah University';
+            address = 'Near Alhikmah University';
+        } else if (currentRestaurant.includes('sherrif')) {
+            name = 'Sherrif Mai Shayi';
+            address = 'Near Alhikmah University, Ilorin';
         }
         
         restaurantName.textContent = name;
@@ -246,7 +248,7 @@ function displayCartItems() {
     // Calculate and display totals
     const totals = calculateCartTotals();
     if (subtotalEl) subtotalEl.textContent = formatPrice(totals.subtotal);
-    if (tapFeeEl) tapFeeEl.textContent = formatPrice(totals.tapFee);
+    if (tapFeeEl) tapFeeEl.textContent = 'Will be determined by number of take-away/order wraps';
     if (totalEl) totalEl.textContent = formatPrice(totals.total);
     
     // Enable checkout button
@@ -258,6 +260,7 @@ function getRestaurantName(restaurantId) {
     if (restaurantId.includes('olas')) return 'Olas Nutrition';
     if (restaurantId.includes('k-bakes')) return 'K Bakes';
     if (restaurantId.includes('beiroot')) return 'Beiroot Restaurant';
+    if (restaurantId.includes('sherrif')) return 'Sherrif Mai Shayi';
     return 'Restaurant';
 }
 
@@ -272,6 +275,9 @@ function getItemEmoji(name) {
     if (name.toLowerCase().includes('drink') || name.toLowerCase().includes('zobo') || name.toLowerCase().includes('fura') || name.toLowerCase().includes('yogurt')) return '🥤';
     if (name.toLowerCase().includes('sandwich')) return '🥪';
     if (name.toLowerCase().includes('fries') || name.toLowerCase().includes('potato')) return '🍟';
+    if (name.toLowerCase().includes('indomie')) return '🍜';
+    if (name.toLowerCase().includes('egg')) return '🥚';
+    if (name.toLowerCase().includes('tea')) return '☕';
     return '🍽️';
 }
 
@@ -347,6 +353,17 @@ function showNotification(message) {
 
 // Initialize cart on page load
 document.addEventListener('DOMContentLoaded', function() {
+    // Load cart from localStorage
+    const savedCart = localStorage.getItem('tapdoshCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    }
+    
+    const savedRestaurant = localStorage.getItem('tapdoshCurrentRestaurant');
+    if (savedRestaurant) {
+        currentRestaurant = savedRestaurant;
+    }
+    
     updateCartCount();
     
     // Display cart items if on cart page
@@ -387,10 +404,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <strong>${restaurantName}</strong>
                             </div>
                             ${summaryHTML}
-                            <div class="modal-order-item">
-                                <span>Tap Fee</span>
-                                <span>${formatPrice(totals.tapFee)}</span>
-                            </div>
                             <div class="order-total">
                                 <span>Total</span>
                                 <span>${formatPrice(totals.total)}</span>
@@ -435,6 +448,19 @@ document.addEventListener('DOMContentLoaded', function() {
         element.addEventListener('click', trackUserActivity);
         element.addEventListener('focus', trackUserActivity);
         element.addEventListener('keydown', trackUserActivity);
+    });
+    
+    // Listen for cart updates from other pages
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'tapdoshCart') {
+            const newCart = JSON.parse(e.newValue) || [];
+            cart = newCart;
+            updateCartCount();
+            
+            if (document.getElementById('cartItems')) {
+                displayCartItems();
+            }
+        }
     });
 });
 

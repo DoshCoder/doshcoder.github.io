@@ -35,14 +35,14 @@ function processOrder(event) {
     
     // Calculate totals
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const tapFee = 50; // Fixed tap fee
-    const total = subtotal + tapFee;
+    const total = subtotal;
     
     // Get restaurant name
     let restaurantName = '';
     if (restaurant.includes('olas')) restaurantName = 'Olas Nutrition';
     else if (restaurant.includes('k-bakes')) restaurantName = 'K Bakes';
     else if (restaurant.includes('beiroot')) restaurantName = 'Beiroot Restaurant';
+    else if (restaurant.includes('sherrif')) restaurantName = 'Sherrif Mai Shayi';
     else restaurantName = 'Restaurant';
     
     // Format items list for WhatsApp
@@ -64,15 +64,16 @@ ${itemsList}
 
 *PAYMENT SUMMARY:*
 Subtotal: ₦${subtotal.toLocaleString('en-NG')}
-Tap Fee: ₦${tapFee.toLocaleString('en-NG')}
+Tap Fee: Will be determined by number of take-away/order wraps
 *TOTAL: ₦${total.toLocaleString('en-NG')}*
 
 📝 Special Instructions: ${specialInstructions || 'None'}
 
 *IMPORTANT NOTES:*
 • Your delivery fee will be determined by your location
-• Our representative will respond with the exact delivery fee
-• Payment can be made via bank transfer or cash on delivery
+• Your tap fee will be determined by number of take-away/order wraps
+• Our representative will respond with the exact delivery fee and tap fee
+• Payment can be made via bank transfer before order can be placed
 
 Thank you!`;
 
@@ -80,13 +81,13 @@ Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     
     // WhatsApp number (TapDosh representative)
-    const whatsappNumber = '2349031123030';
+    const whatsappNumber = '2349050270392';
     
     // Create WhatsApp URL
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
     // Show confirmation message
-    const confirmationMessage = `Opening WhatsApp to complete your order!\n\nYour order details will be sent to our TapDosh representative.\n\nPlease make sure to send the message when WhatsApp opens.\n\nNote: Your delivery fee will be determined by your location.`;
+    const confirmationMessage = `Opening WhatsApp to complete your order!\n\nYour order details will be sent to our TapDosh representative.\n\nPlease make sure to send the message when WhatsApp opens.\n\nNote: Your delivery fee will be determined by your location and tap fee by number of take-away/order wraps.`;
     
     if (confirm(confirmationMessage)) {
         // Clear cart

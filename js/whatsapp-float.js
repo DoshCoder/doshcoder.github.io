@@ -5,7 +5,7 @@ let inactivityTimer = null;
 function initWhatsAppFloat() {
     // Create WhatsApp float element
     whatsAppFloat = document.createElement('a');
-    whatsAppFloat.href = 'https://wa.me/2349031123030';
+    whatsAppFloat.href = 'https://wa.me/2349050270392';
     whatsAppFloat.target = '_blank';
     whatsAppFloat.className = 'whatsapp-float';
     whatsAppFloat.innerHTML = '<i class="fab fa-whatsapp"></i>';

@@ -1,12 +1,47 @@
 // Main JavaScript for TapDosh
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle?.querySelector('i');
+    
+    if (themeToggle) {
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('tapdoshTheme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            if (themeIcon) {
+                if (isDarkMode) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            // Save preference to localStorage
+            localStorage.setItem('tapdoshTheme', isDarkMode ? 'dark' : 'light');
+        });
+    }
+    
     // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
             if (navLinks.classList.contains('active')) {
@@ -22,8 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('click', function(event) {
             if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
                 navLinks.classList.remove('active');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-                menuToggle.querySelector('i').classList.add('fa-bars');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        // Close menu when clicking on a link
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     }
@@ -299,7 +349,7 @@ const restaurants = [
         id: 'beiroot-restaurant',
         name: 'Beiroot Restaurant',
         tagline: 'Premium Sandwiches & Wraps',
-        location: 'Tanke, Near Alhikmah University',
+        location: 'Near Alhikmah University',
         deliveryTime: '35-50 minutes',
         hours: '9:00 AM - 11:00 PM',
         badges: ['🏆 Certified', '🥪 Premium', '⚡ Fast', '🎓 Student Favorite'],
@@ -424,6 +474,59 @@ const restaurants = [
                 category: 'wraps'
             }
         ]
+    },
+    {
+        id: 'sherrif-mai-shayi',
+        name: 'Sherrif Mai Shayi',
+        tagline: 'Tea, Bread & Indomie Specialist',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '20-35 minutes',
+        hours: '6:00 AM - 12:00 AM',
+        badges: ['🏆 Certified', '🌙 Late Night', '🎓 Student Favorite', '☕ Tea'],
+        menu: [
+            {
+                id: 51,
+                name: 'Small Indomie',
+                description: 'Small portion of indomie noodles',
+                price: 400,
+                category: 'indomie'
+            },
+            {
+                id: 52,
+                name: 'Big Indomie',
+                description: 'Large portion of indomie noodles',
+                price: 600,
+                category: 'indomie'
+            },
+            {
+                id: 53,
+                name: 'Egg',
+                description: 'Fried or boiled egg',
+                price: 300,
+                category: 'extras'
+            },
+            {
+                id: 54,
+                name: 'Medium Size Bread & Egg',
+                description: 'Medium bread with egg',
+                price: 1000,
+                category: 'bread-egg'
+            },
+            {
+                id: 55,
+                name: 'Big Size Bread & Egg',
+                description: 'Large bread with egg',
+                price: 1200,
+                category: 'bread-egg'
+            },
+            {
+                id: 56,
+                name: 'Small Size Bread & Egg',
+                description: 'Small bread with egg',
+                price: 700,
+                category: 'bread-egg'
+            }
+        ]
     }
 ];
 
@@ -479,6 +582,7 @@ function getRestaurantIcon(name) {
     if (name.includes('Olas')) return '🍚';
     if (name.includes('K Bakes')) return '🍞';
     if (name.includes('Beiroot')) return '🥪';
+    if (name.includes('Sherrif')) return '☕';
     return '🍽️';
 }
 
