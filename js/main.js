@@ -822,28 +822,28 @@ const restaurants = [
                 id: 407,
                 name: 'Egusi Soup',
                 description: 'Melon seed soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 408,
                 name: 'Ewedu Soup',
                 description: 'Jute leaf soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 409,
                 name: 'Gbegiri Soup',
                 description: 'Bean soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 410,
                 name: 'Abula (Ewedu & Gbegiri)',
                 description: 'Combination of ewedu and gbegiri soup',
-                price: 800,
+                price: 0.00,
                 category: 'soups'
             }
         ]
@@ -1586,28 +1586,28 @@ const restaurants = [
                 id: 607,
                 name: 'Egusi Soup',
                 description: 'Melon seed soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 608,
                 name: 'Ewedu Soup',
                 description: 'Jute leaf soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 609,
                 name: 'Gbegiri Soup',
                 description: 'Bean soup',
-                price: 500,
+                price: 0.00,
                 category: 'soups'
             },
             {
                 id: 610,
                 name: 'Abula (Ewedu & Gbegiri)',
                 description: 'Combination of ewedu and gbegiri soup',
-                price: 800,
+                price: 0.00,
                 category: 'soups'
             }
         ]
