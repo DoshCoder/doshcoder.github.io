@@ -30,7 +30,6 @@ function getRestaurantData() {
             tagline: 'Authentic Nigerian Cuisine',
             location: 'Opposite Alhikmah University, Ilorin',
             deliveryTime: '30-45 minutes',
-            hours: '10:00 AM - 10:00 PM',
             badges: ['🏆 Certified', '⚡ Fast', '🍗 Chicken', '🎓 Student Favorite'],
             menu: [
                 {
@@ -96,7 +95,6 @@ function getRestaurantData() {
             tagline: 'Fresh Baked Goods & More',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '25-40 minutes',
-            hours: '10:00 AM - 10:00 PM',
             badges: ['🏆 Certified', '🍞 Fresh', '🎓 Student Favorite', '🌙 Late Night'],
             menu: [
                 {
@@ -282,7 +280,6 @@ function getRestaurantData() {
             tagline: 'Fresh Fruits & Juices',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '20-35 minutes',
-            hours: '10:00 AM - 10:00 PM',
             badges: ['🏆 Certified', '🍊 Fresh', '🎓 Student Favorite', '🥤 Juice'],
             menu: [
                 {
@@ -376,7 +373,6 @@ function getRestaurantData() {
             tagline: 'Sweet Pastries & Cakes',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '25-40 minutes',
-            hours: '10:00 AM - 5:00 PM',
             badges: ['🏆 Certified', '🍰 Sweet', '🎓 Student Favorite', '🥧 Pastry'],
             menu: [
                 {
@@ -421,7 +417,6 @@ function getRestaurantData() {
             tagline: 'Street Food & Quick Bites',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '30-45 minutes',
-            hours: '10:00 AM - 10:00 PM',
             badges: ['🏆 Certified', '🌯 Wraps', '🎓 Student Favorite', '🍔 Burgers'],
             menu: [
                 {
@@ -522,7 +517,6 @@ function getRestaurantData() {
             tagline: 'Traditional Northern Delicacies',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '20-35 minutes',
-            hours: '7:30 AM - 10:00 PM',
             badges: ['🏆 Certified', '🥛 Cheese', '🎓 Student Favorite', '🍞 Bread'],
             menu: [
                 {
@@ -547,7 +541,6 @@ function getRestaurantData() {
             tagline: 'Premium Dining Experience',
             location: 'Near Alhikmah University, Ilorin',
             deliveryTime: '45-60 minutes',
-            hours: '12:00 PM - 5:00 PM',
             badges: ['🏆 Certified', '🍷 Premium', '🎓 Student Favorite', '🥂 Cocktails'],
             menu: [
                 {
@@ -635,6 +628,71 @@ function getRestaurantData() {
                     category: 'mocktails'
                 }
             ]
+        },
+        'ms-ultimate-chops-events': {
+            name: 'MS Ultimate Chops & Events',
+            tagline: 'Delicious Pastries & Snacks',
+            location: 'Near Alhikmah University, Ilorin',
+            deliveryTime: '20-35 minutes',
+            badges: ['🏆 Certified', '🥧 Pastry', '🎓 Student Favorite', '🍩 Snacks'],
+            menu: [
+                {
+                    id: 1500,
+                    name: 'Samosa',
+                    description: 'Crispy triangular pastry with savory filling',
+                    price: 250,
+                    category: 'snacks'
+                },
+                {
+                    id: 1501,
+                    name: 'Spring Roll',
+                    description: 'Crispy rolled pastry with vegetable filling',
+                    price: 250,
+                    category: 'snacks'
+                },
+                {
+                    id: 1502,
+                    name: 'Meat Pie',
+                    description: 'Flaky pastry with seasoned meat filling',
+                    price: 1000,
+                    category: 'pastries'
+                },
+                {
+                    id: 1503,
+                    name: 'Puf Puf',
+                    description: 'African dough balls, soft and delicious',
+                    price: 100,
+                    category: 'snacks'
+                },
+                {
+                    id: 1504,
+                    name: 'Egg Roll',
+                    description: 'Pastry roll with egg filling',
+                    price: 500,
+                    category: 'pastries'
+                },
+                {
+                    id: 1505,
+                    name: 'Small Donut',
+                    description: 'Small ring-shaped pastry',
+                    price: 300,
+                    category: 'pastries'
+                },
+                {
+                    id: 1506,
+                    name: 'Big Donut',
+                    description: 'Large ring-shaped pastry',
+                    price: 500,
+                    category: 'pastries'
+                },
+                {
+                    id: 1507,
+                    name: 'Buns',
+                    description: 'Soft baked buns',
+                    price: 100,
+                    category: 'bread'
+                }
+            ]
         }
     };
     
@@ -650,7 +708,7 @@ function getRestaurantData() {
     return null;
 }
 
-// Display restaurant information
+// Display restaurant information (UPDATED to show TapDosh hours)
 function displayRestaurantInfo(restaurant) {
     // Update page title
     document.title = `${restaurant.name} - TapDosh`;
@@ -667,9 +725,9 @@ function displayRestaurantInfo(restaurant) {
     const locationElement = document.getElementById('restaurantLocation');
     if (locationElement) locationElement.textContent = restaurant.location;
     
-    // Update hours
+    // Update hours to show TapDosh hours
     const hoursElement = document.getElementById('restaurantHours');
-    if (hoursElement) hoursElement.textContent = restaurant.hours;
+    if (hoursElement) hoursElement.textContent = '10:00 AM - 10:00 PM';
     
     // Update delivery info
     const deliveryElement = document.getElementById('restaurantDelivery');
@@ -697,6 +755,8 @@ function displayRestaurantInfo(restaurant) {
                       badge.includes('🥛') ? '<i class="fas fa-wine-bottle"></i>' :
                       badge.includes('🥂') ? '<i class="fas fa-glass-cheers"></i>' :
                       badge.includes('🍷') ? '<i class="fas fa-wine-glass-alt"></i>' :
+                      badge.includes('🥧') ? '<i class="fas fa-pie"></i>' :
+                      badge.includes('🍩') ? '<i class="fas fa-doughnut"></i>' :
                       ''}
                     ${badge.replace(/[^\w\s]/g, '')}
                 </span>

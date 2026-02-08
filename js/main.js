@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Restaurant Data
+// Restaurant Data (Removed individual restaurant hours)
 const restaurants = [
     {
         id: 'olas-nutrition',
@@ -98,7 +98,6 @@ const restaurants = [
         tagline: 'Authentic Nigerian Cuisine',
         location: 'Opposite Alhikmah University, Ilorin',
         deliveryTime: '30-45 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '⚡ Fast', '🍗 Chicken', '🎓 Student Favorite'],
         menu: [
             {
@@ -165,7 +164,6 @@ const restaurants = [
         tagline: 'Fresh Baked Goods & More',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🍞 Fresh', '🎓 Student Favorite', '🌙 Late Night'],
         menu: [
             {
@@ -351,7 +349,6 @@ const restaurants = [
         tagline: 'Premium Sandwiches & Wraps',
         location: 'Near Alhikmah University',
         deliveryTime: '35-50 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🥪 Premium', '⚡ Fast', '🎓 Student Favorite'],
         menu: [
             {
@@ -537,7 +534,6 @@ const restaurants = [
         tagline: 'Tea, Bread & Indomie Specialist',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '20-35 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🌙 Late Night', '🎓 Student Favorite', '☕ Tea'],
         menu: [
             {
@@ -590,7 +586,6 @@ const restaurants = [
         tagline: 'A moment of best treat',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🍧 Dessert', '🎓 Student Favorite', '🥛 Yogurt'],
         menu: [
             {
@@ -664,7 +659,6 @@ const restaurants = [
         tagline: 'Quality Meals & Shawarma',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '30-45 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🍗 Chicken', '🥩 Beef', '🎓 Student Favorite'],
         menu: [
             {
@@ -766,7 +760,6 @@ const restaurants = [
         tagline: 'Traditional Nigerian Swallows',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🥘 Traditional', '🎓 Student Favorite', '🍲 Soup'],
         menu: [
             {
@@ -854,7 +847,6 @@ const restaurants = [
         tagline: 'Multi-Cuisine Restaurant',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '40-60 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🍔 Burgers', '🎓 Student Favorite', '🌙 Late Night'],
         menu: [
             {
@@ -1530,7 +1522,6 @@ const restaurants = [
         tagline: 'Traditional Nigerian Swallows',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🥘 Traditional', '🎓 Student Favorite', '🍲 Soup'],
         menu: [
             {
@@ -1618,7 +1609,6 @@ const restaurants = [
         tagline: 'Fresh Fruits & Juices',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '20-35 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🍊 Fresh', '🎓 Student Favorite', '🥤 Juice'],
         menu: [
             {
@@ -1713,7 +1703,6 @@ const restaurants = [
         tagline: 'Sweet Pastries & Cakes',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 5:00 PM',
         badges: ['🏆 Certified', '🍰 Sweet', '🎓 Student Favorite', '🥧 Pastry'],
         menu: [
             {
@@ -1759,7 +1748,6 @@ const restaurants = [
         tagline: 'Street Food & Quick Bites',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '30-45 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🌯 Wraps', '🎓 Student Favorite', '🍔 Burgers'],
         menu: [
             {
@@ -2029,7 +2017,6 @@ const restaurants = [
         tagline: 'Traditional Nigerian Dishes',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🥘 Traditional', '🎓 Student Favorite', '🍚 Rice'],
         menu: [
             {
@@ -2348,7 +2335,6 @@ const restaurants = [
         tagline: 'Tea & Indomie Specialist',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '20-35 minutes',
-        hours: '10:00 AM - 10:00 PM',
         badges: ['🏆 Certified', '🌙 Late Night', '🎓 Student Favorite', '☕ Tea'],
         menu: [
             {
@@ -2401,7 +2387,6 @@ const restaurants = [
         tagline: 'Home-style Nigerian Meals',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '25-40 minutes',
-        hours: '8:00 AM - 7:00 PM',
         badges: ['🏆 Certified', '🏠 Homestyle', '🎓 Student Favorite', '🍚 Rice'],
         menu: [
             {
@@ -2475,7 +2460,6 @@ const restaurants = [
         tagline: 'Traditional Northern Delicacies',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '20-35 minutes',
-        hours: '7:30 AM - 10:00 PM',
         badges: ['🏆 Certified', '🥛 Cheese', '🎓 Student Favorite', '🍞 Bread'],
         menu: [
             {
@@ -2501,7 +2485,6 @@ const restaurants = [
         tagline: 'Premium Dining Experience',
         location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '45-60 minutes',
-        hours: '12:00 PM - 5:00 PM',
         badges: ['🏆 Certified', '🍷 Premium', '🎓 Student Favorite', '🥂 Cocktails'],
         menu: [
             {
@@ -2876,10 +2859,76 @@ const restaurants = [
                 category: 'continental'
             }
         ]
+    },
+    {
+        id: 'ms-ultimate-chops-events',
+        name: 'MS Ultimate Chops & Events',
+        tagline: 'Delicious Pastries & Snacks',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '20-35 minutes',
+        badges: ['🏆 Certified', '🥧 Pastry', '🎓 Student Favorite', '🍩 Snacks'],
+        menu: [
+            {
+                id: 1500,
+                name: 'Samosa',
+                description: 'Crispy triangular pastry with savory filling',
+                price: 250,
+                category: 'snacks'
+            },
+            {
+                id: 1501,
+                name: 'Spring Roll',
+                description: 'Crispy rolled pastry with vegetable filling',
+                price: 250,
+                category: 'snacks'
+            },
+            {
+                id: 1502,
+                name: 'Meat Pie',
+                description: 'Flaky pastry with seasoned meat filling',
+                price: 1000,
+                category: 'pastries'
+            },
+            {
+                id: 1503,
+                name: 'Puf Puf',
+                description: 'African dough balls, soft and delicious',
+                price: 100,
+                category: 'snacks'
+            },
+            {
+                id: 1504,
+                name: 'Egg Roll',
+                description: 'Pastry roll with egg filling',
+                price: 500,
+                category: 'pastries'
+            },
+            {
+                id: 1505,
+                name: 'Small Donut',
+                description: 'Small ring-shaped pastry',
+                price: 300,
+                category: 'pastries'
+            },
+            {
+                id: 1506,
+                name: 'Big Donut',
+                description: 'Large ring-shaped pastry',
+                price: 500,
+                category: 'pastries'
+            },
+            {
+                id: 1507,
+                name: 'Buns',
+                description: 'Soft baked buns',
+                price: 100,
+                category: 'bread'
+            }
+        ]
     }
 ];
 
-// Load and display restaurants on home page
+// Load and display restaurants on home page (UPDATED to show TapDosh hours)
 function loadRestaurants() {
     const restaurantsContainer = document.getElementById('restaurantsContainer');
     if (!restaurantsContainer) return;
@@ -2916,8 +2965,8 @@ function loadRestaurants() {
                     <div class="info-item">
                         <i class="fas fa-clock"></i>
                         <div class="info-text">
-                            ${restaurant.hours}
-                            <small>Today's hours</small>
+                            10:00 AM - 10:00 PM
+                            <small>TapDosh Operating Hours</small>
                         </div>
                     </div>
                 </div>
@@ -2950,6 +2999,7 @@ function getRestaurantIcon(name) {
     if (name.includes('Mummy Saoban')) return '🏠';
     if (name.includes('Fatimah')) return '🥛';
     if (name.includes('Red Caffino')) return '🥂';
+    if (name.includes('MS Ultimate')) return '🥧';
     return '🍽️';
 }
 

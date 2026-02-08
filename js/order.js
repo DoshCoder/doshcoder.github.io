@@ -16,11 +16,21 @@ function processOrder(event) {
         return;
     }
     
-    // Validate phone number - accept both 10 and 11 digit numbers
-    const phoneRegex = /^[0-9]{10,11}$/;
+    // Validate phone number - accept exactly 11 digit Nigerian phone numbers
+    const phoneRegex = /^[0-9]{11}$/;
     const cleanPhone = phoneNumber.replace(/\D/g, '');
-    if (!phoneRegex.test(cleanPhone)) {
-        showNotification('Please enter a valid phone number (10 or 11 digits)');
+    
+    // Remove leading 0 if present to validate as 11 digits
+    let validatedPhone = cleanPhone;
+    if (validatedPhone.length === 11 && validatedPhone.startsWith('0')) {
+        // Already 11 digits with leading 0
+    } else if (validatedPhone.length === 10) {
+        // Add leading 0 to make it 11 digits
+        validatedPhone = '0' + validatedPhone;
+    }
+    
+    if (!phoneRegex.test(validatedPhone)) {
+        showNotification('Please enter a valid 11-digit Nigerian phone number (e.g., 08012345678)');
         return;
     }
     
@@ -88,7 +98,7 @@ function processOrder(event) {
 *ORDER DETAILS:*
 🏪 Restaurant: ${restaurantName}
 👤 Customer: ${fullName}
-📞 Phone: ${cleanPhone}
+📞 Phone: ${validatedPhone}
 📍 Delivery Address: ${deliveryAddress}
 
 *ORDER ITEMS:*
@@ -115,7 +125,7 @@ Thank you!`;
     // WhatsApp number (TapDosh representative)
     const whatsappNumber = '2349050270392';
     
-    // Create WhatsApp URL
+    // Create WhatsApp URL with validated 11-digit phone
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
     // Show confirmation message
@@ -155,27 +165,25 @@ document.addEventListener('DOMContentLoaded', function() {
         orderForm.addEventListener('submit', processOrder);
     }
     
-    // Format phone number input
+    // Format phone number input for 11-digit Nigerian format
     const phoneInput = document.getElementById('phoneNumber');
     if (phoneInput) {
         phoneInput.addEventListener('input', function(e) {
             // Remove all non-digits
             let value = e.target.value.replace(/\D/g, '');
             
-            // Limit to 11 digits maximum
+            // Limit to 11 digits maximum for Nigerian numbers
             if (value.length > 11) {
                 value = value.substring(0, 11);
             }
             
-            // Format as Nigerian phone number
-            if (value.length <= 3) {
+            // Format as 11-digit Nigerian phone number: 080X XXX XXXX
+            if (value.length <= 4) {
                 value = value;
-            } else if (value.length <= 6) {
-                value = `${value.substring(0, 3)} ${value.substring(3)}`;
-            } else if (value.length <= 10) {
-                value = `${value.substring(0, 3)} ${value.substring(3, 6)} ${value.substring(6)}`;
+            } else if (value.length <= 7) {
+                value = `${value.substring(0, 4)} ${value.substring(4)}`;
             } else {
-                value = `${value.substring(0, 3)} ${value.substring(3, 6)} ${value.substring(6, 10)}`;
+                value = `${value.substring(0, 4)} ${value.substring(4, 7)} ${value.substring(7, 11)}`;
             }
             
             e.target.value = value;
@@ -184,14 +192,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Auto-format on focus out
         phoneInput.addEventListener('blur', function() {
             let value = this.value.replace(/\D/g, '');
-            if (value.length === 10 || value.length === 11) {
-                if (value.length === 11 && value.startsWith('0')) {
-                    this.value = `0${value.substring(1, 4)} ${value.substring(4, 7)} ${value.substring(7)}`;
-                } else if (value.length === 10) {
-                    this.value = `${value.substring(0, 3)} ${value.substring(3, 6)} ${value.substring(6)}`;
+            if (value.length >= 10 && value.length <= 11) {
+                // Ensure 11-digit format
+                if (value.length === 10) {
+                    value = '0' + value; // Add leading zero for 10-digit numbers
+                }
+                if (value.length === 11) {
+                    this.value = `${value.substring(0, 4)} ${value.substring(4, 7)} ${value.substring(7)}`;
                 }
             }
         });
+        
+        // Add placeholder text to guide users
+        phoneInput.placeholder = '0801 234 5678 (11 digits)';
     }
     
     // Track user activity
