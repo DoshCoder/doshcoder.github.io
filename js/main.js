@@ -1,4 +1,4 @@
-// Main JavaScript for TapDosh
+ // Main JavaScript for TapDosh
 
 document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle
@@ -2925,6 +2925,32 @@ const restaurants = [
                 category: 'bread'
             }
         ]
+    },
+    // --- NEW RESTAURANT: F.B.I food Restaurant ---
+    {
+        id: 'fbi-food-restaurant',
+        name: 'F.B.I food Restaurant',
+        tagline: 'Delicious Traditional & Rice Meals',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '25-40 minutes',
+        badges: ['🏆 Certified', '🍛 Rice', '🥘 Swallow', '🎓 Student Favorite'],
+        menu: [
+            { id: 1600, name: 'Danwake (Takeaway)', description: 'Danwake served in takeaway pack', price: 1700, category: 'traditional' },
+            { id: 1601, name: 'Extra Danwake (Takeaway)', description: 'Extra portion of danwake in takeaway pack', price: 2200, category: 'traditional' },
+            { id: 1602, name: 'Jollof & Fried Rice', description: 'Mixed jollof and fried rice', price: 1500, category: 'rice' },
+            { id: 1603, name: 'Jollof & Fried Rice (Plastic Takeaway)', description: 'Mixed rice in plastic takeaway pack', price: 1700, category: 'rice' },
+            { id: 1604, name: 'Extra Jollof & Fried Rice (Bigger Takeaway)', description: 'Large portion of mixed rice in big takeaway pack', price: 2200, category: 'rice' },
+            { id: 1605, name: 'White Rice & Beans (Garau Garau) with Yaji & Salad', description: 'White rice and beans served with spicy peanut pepper mix and salad', price: 1500, category: 'rice-beans' },
+            { id: 1606, name: 'White Rice & Beans (Garau Garau) with Yaji & Salad (Plastic Takeaway)', description: 'White rice and beans with yaji and salad in plastic takeaway', price: 1700, category: 'rice-beans' },
+            { id: 1607, name: 'Extra White Rice & Beans (Garau Garau) with Yaji & Salad (Big Takeaway)', description: 'Extra portion of rice and beans with yaji and salad in big takeaway pack', price: 2200, category: 'rice-beans' },
+            { id: 1608, name: 'Pounded Yam (Per Wrap)', description: 'One wrap of soft pounded yam', price: 500, category: 'swallows' },
+            { id: 1609, name: 'Fish (Small)', description: 'Small-sized fried/grilled fish', price: 800, category: 'proteins' },
+            { id: 1610, name: 'Fish (Large)', description: 'Large-sized fried/grilled fish', price: 1000, category: 'proteins' },
+            { id: 1611, name: 'Beef (Per Piece)', description: 'One piece of seasoned beef', price: 200, category: 'proteins' },
+            { id: 1612, name: 'Ponmo (Per Piece)', description: 'One piece of cow skin', price: 100, category: 'proteins' },
+            { id: 1613, name: 'Egusi Soup', description: 'Melon seed soup (price included with swallow)', price: 0.00, category: 'soups' },
+            { id: 1614, name: 'Masa (Per Piece)', description: 'Traditional rice cake', price: 100, category: 'snacks' }
+        ]
     }
 ];
 
@@ -3000,6 +3026,8 @@ function getRestaurantIcon(name) {
     if (name.includes('Fatimah')) return '🥛';
     if (name.includes('Red Caffino')) return '🥂';
     if (name.includes('MS Ultimate')) return '🥧';
+    // --- NEW: F.B.I food Restaurant icon ---
+    if (name.includes('F.B.I')) return '🍛';
     return '🍽️';
 }
 

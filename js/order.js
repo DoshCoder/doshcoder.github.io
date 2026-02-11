@@ -1,4 +1,4 @@
-// Order processing and WhatsApp integration
+ // Order processing and WhatsApp integration
 
 // Process order and redirect to WhatsApp
 function processOrder(event) {
@@ -78,6 +78,8 @@ function processOrder(event) {
         else if (restaurant.includes('mummy-saoban')) restaurantName = 'Mummy Saoban Restaurant';
         else if (restaurant.includes('fatimah')) restaurantName = 'Fatimah A\' Wara & Gurasa';
         else if (restaurant.includes('red-caffino')) restaurantName = 'Red Caffino Restaurant';
+        // --- NEW: F.B.I food Restaurant ---
+        else if (restaurant.includes('fbi-food')) restaurantName = 'F.B.I food Restaurant';
         else restaurantName = 'Restaurant';
     }
     
