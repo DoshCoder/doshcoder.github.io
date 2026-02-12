@@ -1,4 +1,4 @@
- // Order processing and WhatsApp integration
+// Order processing and WhatsApp integration
 
 // Process order and redirect to WhatsApp
 function processOrder(event) {
@@ -59,7 +59,7 @@ function processOrder(event) {
         }
     }
     
-    // Fallback to hardcoded names
+    // Fallback to hardcoded names (UPDATED)
     if (!restaurantName) {
         if (restaurant.includes('olas')) restaurantName = 'Olas Nutrition';
         else if (restaurant.includes('k-bakes')) restaurantName = 'K Bakes';
@@ -78,8 +78,10 @@ function processOrder(event) {
         else if (restaurant.includes('mummy-saoban')) restaurantName = 'Mummy Saoban Restaurant';
         else if (restaurant.includes('fatimah')) restaurantName = 'Fatimah A\' Wara & Gurasa';
         else if (restaurant.includes('red-caffino')) restaurantName = 'Red Caffino Restaurant';
-        // --- NEW: F.B.I food Restaurant ---
-        else if (restaurant.includes('fbi-food')) restaurantName = 'F.B.I food Restaurant';
+        else if (restaurant.includes('fbi-food') || restaurant.includes('F.B.I')) restaurantName = 'Hajia F.B.I food Restaurant';
+        // --- NEW FALLBACKS ---
+        else if (restaurant.includes('mm-kilishi') || restaurant.includes('M&M')) restaurantName = 'M&M Kilishi and dambu nama';
+        else if (restaurant.includes('bylessh')) restaurantName = 'Bylessh';
         else restaurantName = 'Restaurant';
     }
     
