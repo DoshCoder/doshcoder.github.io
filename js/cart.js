@@ -22,9 +22,7 @@ function updateCartCount() {
         element.textContent = totalItems;
     });
     
-    // Update cart count in localStorage for cross-page updates
     localStorage.setItem('tapdoshCartCount', totalItems);
-    
     return totalItems;
 }
 
@@ -38,24 +36,19 @@ function saveCart() {
     localStorage.setItem('tapdoshCart', JSON.stringify(cart));
     localStorage.setItem('tapdoshCurrentRestaurant', currentRestaurant);
     updateCartCount();
-    trackUserActivity(); // User is active
+    trackUserActivity();
 }
 
 // Add item to cart
 function addToCart(item, restaurant) {
-    // Set current restaurant
     currentRestaurant = restaurant;
-    
-    // Check if item already exists in cart
     const existingItemIndex = cart.findIndex(cartItem => 
         cartItem.id === item.id && cartItem.restaurant === restaurant
     );
     
     if (existingItemIndex > -1) {
-        // Update quantity
         cart[existingItemIndex].quantity += item.quantity || 1;
     } else {
-        // Add new item
         cart.push({
             ...item,
             restaurant: restaurant,
@@ -64,10 +57,7 @@ function addToCart(item, restaurant) {
     }
     
     saveCart();
-    
-    // Show notification
     showNotification(`${item.name} added to cart!`);
-    
     return true;
 }
 
@@ -76,14 +66,11 @@ function removeFromCart(itemId, restaurant) {
     cart = cart.filter(item => 
         !(item.id === itemId && item.restaurant === restaurant)
     );
-    
-    // If cart is empty, clear current restaurant
     if (cart.length === 0) {
         currentRestaurant = null;
     }
-    
     saveCart();
-    trackUserActivity(); // User is active
+    trackUserActivity();
     return true;
 }
 
@@ -92,23 +79,18 @@ function updateQuantity(itemId, restaurant, quantity) {
     const itemIndex = cart.findIndex(item => 
         item.id === itemId && item.restaurant === restaurant
     );
-    
     if (itemIndex > -1) {
         if (quantity <= 0) {
-            // Remove item if quantity is 0 or less
             cart.splice(itemIndex, 1);
-            
-            // If cart is empty, clear current restaurant
             if (cart.length === 0) {
                 currentRestaurant = null;
             }
         } else {
-            // Update quantity
             cart[itemIndex].quantity = quantity;
         }
         saveCart();
     }
-    trackUserActivity(); // User is active
+    trackUserActivity();
     return true;
 }
 
@@ -119,29 +101,39 @@ function clearCart() {
     localStorage.removeItem('tapdoshCart');
     localStorage.removeItem('tapdoshCurrentRestaurant');
     updateCartCount();
-    
-    // Show notification
     showNotification('Cart cleared successfully!');
-    
-    // Update cart display if on cart page
     if (document.getElementById('cartItems')) {
         displayCartItems();
     }
-    
-    trackUserActivity(); // User is active
+    trackUserActivity();
     return true;
 }
 
 // Calculate cart totals
 function calculateCartTotals() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
     const total = subtotal;
+    return { subtotal, total };
+}
+
+// Check if current restaurant has a minimum items requirement and if it's met
+function checkMinimumItemsRequirement() {
+    if (!currentRestaurant) return { required: false, met: true, message: '' };
     
-    return {
-        subtotal,
-        total
-    };
+    let restaurantData = null;
+    if (typeof restaurants !== 'undefined') {
+        restaurantData = restaurants.find(r => r.id === currentRestaurant);
+    }
+    
+    if (restaurantData && restaurantData.minimumItems) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const required = restaurantData.minimumItems;
+        const met = totalItems >= required;
+        const message = `⚠️ Minimum of ${required} items required for ${restaurantData.name}. You currently have ${totalItems} item(s). Please add at least ${required - totalItems} more.`;
+        return { required: true, met, message, restaurantName: restaurantData.name, requiredCount: required, currentCount: totalItems };
+    }
+    
+    return { required: false, met: true, message: '' };
 }
 
 // Display cart items on cart page
@@ -158,7 +150,6 @@ function displayCartItems() {
     if (!cartItemsContainer) return;
     
     if (cart.length === 0) {
-        // Show empty cart message
         cartItemsContainer.innerHTML = `
             <div class="empty-cart">
                 <i class="fas fa-shopping-cart"></i>
@@ -169,30 +160,24 @@ function displayCartItems() {
                 </a>
             </div>
         `;
-        
         if (checkoutBtn) checkoutBtn.disabled = true;
         if (restaurantInfo) restaurantInfo.style.display = 'none';
         return;
     }
     
-    // Show restaurant info if we have one
     if (currentRestaurant && restaurantInfo && restaurantName && restaurantAddress) {
         let name = '';
         let address = '';
-        
-        // Get restaurant name and address
         const restaurant = getRestaurantById(currentRestaurant);
         if (restaurant) {
             name = restaurant.name;
             address = restaurant.location;
         }
-        
         restaurantName.textContent = name;
         restaurantAddress.textContent = address;
         restaurantInfo.style.display = 'block';
     }
     
-    // Display cart items
     const itemsHTML = cart.map(item => {
         const total = item.price * item.quantity;
         return `
@@ -226,7 +211,6 @@ function displayCartItems() {
     
     cartItemsContainer.innerHTML = itemsHTML;
     
-    // Add clear cart button if there are items
     if (cart.length > 0) {
         const clearCartBtn = document.createElement('div');
         clearCartBtn.className = 'clear-cart-container';
@@ -236,21 +220,41 @@ function displayCartItems() {
             </button>
         `;
         cartItemsContainer.appendChild(clearCartBtn);
+        
+        const minCheck = checkMinimumItemsRequirement();
+        if (minCheck.required && !minCheck.met) {
+            const warningDiv = document.createElement('div');
+            warningDiv.className = 'delivery-note';
+            warningDiv.style.background = '#ffebee';
+            warningDiv.style.color = '#c62828';
+            warningDiv.style.borderLeftColor = '#d32f2f';
+            warningDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>${minCheck.restaurantName}:</strong> ${minCheck.message}</span>
+            `;
+            cartItemsContainer.appendChild(warningDiv);
+        }
     }
     
-    // Calculate and display totals
     const totals = calculateCartTotals();
     if (subtotalEl) subtotalEl.textContent = formatPrice(totals.subtotal);
     if (tapFeeEl) tapFeeEl.textContent = 'Will be determined by number of take-away/order wraps';
     if (totalEl) totalEl.textContent = formatPrice(totals.total);
     
-    // Enable checkout button
-    if (checkoutBtn) checkoutBtn.disabled = false;
+    if (checkoutBtn) {
+        const minCheck = checkMinimumItemsRequirement();
+        if (minCheck.required && !minCheck.met) {
+            checkoutBtn.disabled = true;
+            checkoutBtn.title = minCheck.message;
+        } else {
+            checkoutBtn.disabled = false;
+            checkoutBtn.title = '';
+        }
+    }
 }
 
 // Get restaurant by ID
 function getRestaurantById(restaurantId) {
-    // This function will be overridden by main.js restaurant data
     if (typeof restaurants !== 'undefined') {
         return restaurants.find(r => r.id === restaurantId);
     }
@@ -289,6 +293,10 @@ function getItemEmoji(name) {
     if (name.includes('cheese') || name.includes('wara')) return '🧀';
     if (name.includes('smoothie') || name.includes('milkshake')) return '🥛';
     if (name.includes('water')) return '💧';
+    if (name.includes('kilishi') || name.includes('dambu')) return '🥩';
+    if (name.includes('milkcake') || name.includes('melt cake') || name.includes('yogofura')) return '🍰';
+    if (name.includes('wings')) return '🍗';
+    if (name.includes('hotdog')) return '🌭';
     return '🍽️';
 }
 
@@ -305,15 +313,12 @@ function removeCartItem(itemId, restaurant) {
 
 // Show notification
 function showNotification(message) {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.innerHTML = `
         <i class="fas fa-check-circle"></i>
         <span>${message}</span>
     `;
-    
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -329,8 +334,6 @@ function showNotification(message) {
         z-index: 3000;
         animation: slideIn 0.3s ease;
     `;
-    
-    // Add animation styles
     const style = document.createElement('style');
     style.textContent = `
         @keyframes slideIn {
@@ -343,10 +346,7 @@ function showNotification(message) {
         }
     `;
     document.head.appendChild(style);
-    
     document.body.appendChild(notification);
-    
-    // Remove notification after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {
@@ -358,30 +358,24 @@ function showNotification(message) {
             }
         }, 300);
     }, 3000);
-    
-    trackUserActivity(); // User is active
+    trackUserActivity();
 }
 
 // Initialize cart on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Load cart from localStorage
     const savedCart = localStorage.getItem('tapdoshCart');
     if (savedCart) {
         cart = JSON.parse(savedCart);
     }
-    
     const savedRestaurant = localStorage.getItem('tapdoshCurrentRestaurant');
     if (savedRestaurant) {
         currentRestaurant = savedRestaurant;
     }
-    
     updateCartCount();
     
-    // Display cart items if on cart page
     if (document.getElementById('cartItems')) {
         displayCartItems();
         
-        // Setup checkout button
         const checkoutBtn = document.getElementById('checkoutBtn');
         if (checkoutBtn) {
             checkoutBtn.addEventListener('click', function() {
@@ -390,13 +384,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Show checkout modal
+                const minCheck = checkMinimumItemsRequirement();
+                if (minCheck.required && !minCheck.met) {
+                    showNotification(minCheck.message);
+                    return;
+                }
+                
                 const modal = document.getElementById('checkoutModal');
                 if (modal) {
                     modal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                     
-                    // Populate order summary in modal
                     const modalOrderSummary = document.getElementById('modalOrderSummary');
                     if (modalOrderSummary) {
                         const summaryHTML = cart.map(item => `
@@ -420,14 +418,21 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span>${formatPrice(totals.total)}</span>
                             </div>
                         `;
+                        
+                        const minCheckModal = checkMinimumItemsRequirement();
+                        if (minCheckModal.required && minCheckModal.met) {
+                            const note = document.createElement('p');
+                            note.className = 'note';
+                            note.style.color = '#4CAF50';
+                            note.innerHTML = `<i class="fas fa-check-circle"></i> Minimum ${minCheckModal.requiredCount} items requirement met.`;
+                            modalOrderSummary.appendChild(note);
+                        }
                     }
                 }
-                
-                trackUserActivity(); // User is active
+                trackUserActivity();
             });
         }
         
-        // Setup modal close button
         const modalClose = document.querySelector('.modal-close');
         if (modalClose) {
             modalClose.addEventListener('click', function() {
@@ -436,11 +441,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     modal.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
-                trackUserActivity(); // User is active
+                trackUserActivity();
             });
         }
         
-        // Close modal when clicking outside
         const modal = document.getElementById('checkoutModal');
         if (modal) {
             modal.addEventListener('click', function(e) {
@@ -448,12 +452,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     modal.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
-                trackUserActivity(); // User is active
+                trackUserActivity();
             });
         }
     }
     
-    // Add activity tracking to all interactive elements
     const interactiveElements = document.querySelectorAll('button, a, input, select, textarea');
     interactiveElements.forEach(element => {
         element.addEventListener('click', trackUserActivity);
@@ -461,13 +464,11 @@ document.addEventListener('DOMContentLoaded', function() {
         element.addEventListener('keydown', trackUserActivity);
     });
     
-    // Listen for cart updates from other pages
     window.addEventListener('storage', function(e) {
         if (e.key === 'tapdoshCart') {
             const newCart = JSON.parse(e.newValue) || [];
             cart = newCart;
             updateCartCount();
-            
             if (document.getElementById('cartItems')) {
                 displayCartItems();
             }
@@ -475,7 +476,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Export functions for use in other files
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.updateQuantity = updateQuantity;
@@ -486,3 +486,4 @@ window.formatPrice = formatPrice;
 window.getRestaurantName = getRestaurantName;
 window.showNotification = showNotification;
 window.trackUserActivity = trackUserActivity;
+window.checkMinimumItemsRequirement = checkMinimumItemsRequirement;
