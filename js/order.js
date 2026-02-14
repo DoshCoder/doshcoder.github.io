@@ -76,6 +76,9 @@ function processOrder(event) {
         else if (restaurant.includes('mm-kilishi') || restaurant.includes('M&M')) restaurantName = 'M&M Kilishi and dambu nama';
         else if (restaurant.includes('bylessh')) restaurantName = 'Bylessh';
         else if (restaurant.includes('tauhii') || restaurant.includes('Wings')) restaurantName = 'Tauhii\'s tasties Wings by tauhida';
+        else if (restaurant.includes('icewave')) restaurantName = 'ICEWAVE';
+        else if (restaurant.includes('barrys-bliss')) restaurantName = 'Barrys Bliss';
+        else if (restaurant.includes('chef-dii')) restaurantName = 'Chef_Dii';
         else restaurantName = 'Restaurant';
     }
     

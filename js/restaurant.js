@@ -1,4 +1,4 @@
- // Restaurant page functionality
+// Restaurant page functionality
 
 // Get restaurant data from URL parameter
 function getRestaurantData() {

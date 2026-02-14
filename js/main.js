@@ -166,7 +166,9 @@ const restaurants = [
             { id: 121, name: 'Medium Chicken/Beef Sandwich', description: 'Medium chicken or beef sandwich', price: 3000, category: 'sandwiches' },
             { id: 122, name: 'Beiroot Sandwich (Spicy Egg)', description: 'Sandwich with spicy egg', price: 2400, category: 'sandwiches' },
             { id: 123, name: 'Crispy Chicken Tenders', description: 'Crispy chicken tenders', price: 3800, category: 'sides' },
-            { id: 124, name: 'Fries', description: 'French fries', price: 2800, category: 'sides' }
+            { id: 124, name: 'Fries', description: 'French fries', price: 2800, category: 'sides' },
+            // NEW ITEM
+            { id: 125, name: 'Slushie', description: 'Slushie per cup', price: 2000, category: 'drinks' }
         ]
     },
     {
@@ -718,6 +720,68 @@ const restaurants = [
             { id: 1900, name: 'Chicken Wings (Pack)', description: 'One pack of crispy chicken wings', price: 5000, category: 'wings' },
             { id: 1901, name: 'Hotdog', description: 'Classic hotdog with toppings', price: 3500, category: 'hotdog' }
         ]
+    },
+    // --- NEW RESTAURANT: ICEWAVE (Student Brand) ---
+    {
+        id: 'icewave',
+        name: 'ICEWAVE',
+        tagline: 'Student-owned coffee & treats – support your peers!',
+        location: 'Alhikmah University',
+        deliveryTime: '25-40 minutes',
+        badges: ['🏆 Student Brand', '☕ Coffee', '🎓 Student Favorite'],
+        isStudentBrand: true,
+        menu: [
+            { id: 2000, name: 'creamy caramel frost (small cup)', description: 'Small cup of creamy caramel frost', price: 3600, category: 'coffee' },
+            { id: 2001, name: 'creamy caramel frost (large cup)', description: 'Large cup of creamy caramel frost', price: 4300, category: 'coffee' },
+            { id: 2002, name: 'creamy caramel frost (extras)', description: 'Extra toppings for creamy caramel frost', price: 300, category: 'coffee' },
+            { id: 2003, name: 'extra caramel sauce', description: 'Add extra caramel sauce', price: 0, category: 'extras' },
+            { id: 2004, name: 'extra whip cream', description: 'Add extra whip cream', price: 0, category: 'extras' },
+            { id: 2005, name: 'extra honey', description: 'Add extra honey', price: 0, category: 'extras' },
+            { id: 2006, name: 'extra chocolate sauce', description: 'Add extra chocolate sauce', price: 0, category: 'extras' },
+            { id: 2007, name: 'extra milk', description: 'Add extra milk', price: 0, category: 'extras' }
+        ]
+    },
+    // --- NEW RESTAURANT: Barrys Bliss ---
+    {
+        id: 'barrys-bliss',
+        name: 'Barrys Bliss',
+        tagline: 'Yogurt & Parfait Specialists',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '25-40 minutes',
+        badges: ['🏆 Certified', '🥛 Yogurt', '🍧 Parfait', '🎓 Student Favorite'],
+        menu: [
+            { id: 2100, name: '35CL PLAIN YOGO', description: '35cl plain yogurt', price: 2200, category: 'yogurt' },
+            { id: 2101, name: '50CL PLAIN YOGO', description: '50cl plain yogurt', price: 3000, category: 'yogurt' },
+            { id: 2102, name: '35CL YOGO FURA', description: '35cl yogurt with fura', price: 2400, category: 'yogurt' },
+            { id: 2103, name: '50CL YOGO FURA', description: '50cl yogurt with fura', price: 3000, category: 'yogurt' },
+            { id: 2104, name: 'COCONUT YOGURT', description: 'Coconut flavored yogurt', price: 2900, category: 'yogurt' },
+            { id: 2105, name: 'Parfait (REGULAR CUP)', description: 'Regular cup of parfait', price: 3000, category: 'parfait' },
+            { id: 2106, name: 'Parfait (BIG CUP)', description: 'Big cup of parfait', price: 4500, category: 'parfait' },
+            { id: 2107, name: 'ZOBO (50CL)', description: '50cl zobo drink', price: 1300, category: 'drinks' },
+            { id: 2108, name: 'ZOBO (35CL)', description: '35cl zobo drink', price: 900, category: 'drinks' }
+        ]
+    },
+    // --- NEW RESTAURANT: Chef_Dii ---
+    {
+        id: 'chef-dii',
+        name: 'Chef_Dii',
+        tagline: 'Delicious Home-style Meals',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '30-45 minutes',
+        badges: ['🏆 Certified', '🍛 Rice', '🍲 Swallow', '🎓 Student Favorite'],
+        menu: [
+            { id: 2200, name: 'Chinese rice and chicken', description: 'Chinese rice served with chicken', price: 8000, category: 'rice' },
+            { id: 2201, name: 'Moimoi elewe (3 filled with fish, egg, sausage) and pap/custard', description: 'Moimoi elewe with 3 fillings (fish, egg, sausage) served with pap or custard', price: 3800, category: 'specials' },
+            { id: 2202, name: 'Jollof rice and chicken', description: 'Jollof rice with chicken', price: 4500, category: 'rice' },
+            { id: 2203, name: 'Zobo', description: 'Hibiscus drink', price: 1000, category: 'drinks' },
+            { id: 2204, name: 'Mocktail', description: 'Refreshing mocktail', price: 1500, category: 'drinks' },
+            { id: 2205, name: 'Asun rice', description: 'Rice with spicy asun (goat meat)', price: 4500, category: 'rice' },
+            { id: 2206, name: 'Swallow and assorted Ogbono', description: 'Swallow (choose eba, semo, amala) with assorted ogbono soup', price: 4000, category: 'swallow' },
+            { id: 2207, name: 'Swallow and assorted efo', description: 'Swallow with assorted efo (vegetable) soup', price: 3500, category: 'swallow' },
+            { id: 2208, name: 'Boiled yam and egg sauce', description: 'Boiled yam served with egg sauce', price: 3500, category: 'breakfast' },
+            { id: 2209, name: 'Spag and chicken', description: 'Spaghetti with chicken', price: 3500, category: 'pasta' },
+            { id: 2210, name: 'Cake parfait', description: 'Cake parfait dessert', price: 2500, category: 'desserts' }
+        ]
     }
 ];
 
@@ -728,7 +792,7 @@ function loadRestaurants() {
     
     const statElements = document.querySelectorAll('.stat-number');
     if (statElements[0]) {
-        statElements[0].textContent = restaurants.length; // 12
+        statElements[0].textContent = restaurants.length; // 15 now
     }
     
     restaurantsContainer.innerHTML = restaurants.map(restaurant => {
@@ -810,5 +874,8 @@ function getRestaurantIcon(name) {
     if (name.includes('M&M')) return '🥩';
     if (name.includes('Bylessh')) return '🍰';
     if (name.includes('Tauhii') || name.includes('Wings')) return '🍗';
+    if (name.includes('ICEWAVE')) return '☕';
+    if (name.includes('Barrys Bliss')) return '🥛';
+    if (name.includes('Chef_Dii')) return '🍛';
     return '🍽️';
 }
