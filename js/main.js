@@ -782,6 +782,47 @@ const restaurants = [
             { id: 2209, name: 'Spag and chicken', description: 'Spaghetti with chicken', price: 3500, category: 'pasta' },
             { id: 2210, name: 'Cake parfait', description: 'Cake parfait dessert', price: 2500, category: 'desserts' }
         ]
+    },
+    // --- NEW STUDENT BRAND: sip with me ---
+    {
+        id: 'sip-with-me',
+        name: 'sip with me',
+        tagline: 'Student-owned – Yogurt & Parfait Specialists',
+        location: 'Alhikmah University',
+        deliveryTime: '20-30 minutes',
+        badges: ['🏆 Student Brand', '🥛 Yogurt', '🍧 Parfait', '🎓 Student Favorite'],
+        isStudentBrand: true,
+        menu: [
+            { id: 2300, name: 'Plain Yoghurt (Big)', description: 'Big size plain yogurt', price: 3500, category: 'yogurt' },
+            { id: 2301, name: 'Plain Yoghurt (Medium)', description: 'Medium size plain yogurt', price: 2500, category: 'yogurt' },
+            { id: 2302, name: 'Plain Yoghurt (Small)', description: 'Small size plain yogurt', price: 1800, category: 'yogurt' },
+            { id: 2303, name: 'Infused Strawberry Yoghurt (Big)', description: 'Big size strawberry infused yogurt', price: 3800, category: 'yogurt' },
+            { id: 2304, name: 'Infused Strawberry Yoghurt (Medium)', description: 'Medium size strawberry infused yogurt', price: 2800, category: 'yogurt' },
+            { id: 2305, name: 'Infused Strawberry Yoghurt (Small)', description: 'Small size strawberry infused yogurt', price: 2000, category: 'yogurt' },
+            { id: 2306, name: 'Yoghurt Parfait (350ml)', description: '350ml yoghurt parfait', price: 3500, category: 'parfait' },
+            { id: 2307, name: 'Yoghurt Parfait (500ml)', description: '500ml yoghurt parfait', price: 4800, category: 'parfait' },
+            { id: 2308, name: 'Fruit Salad (Big)', description: 'Big fruit salad', price: 1500, category: 'fruit' },
+            { id: 2309, name: 'Fruit Salad (Small)', description: 'Small fruit salad', price: 1000, category: 'fruit' },
+            { id: 2310, name: 'Zobo (Big)', description: 'Big zobo drink', price: 1200, category: 'drinks' },
+            { id: 2311, name: 'Zobo (Small)', description: 'Small zobo drink', price: 800, category: 'drinks' },
+            { id: 2312, name: 'Extra Toppings', description: 'Extra toppings for your order', price: 1000, category: 'toppings' }
+        ]
+    },
+    // --- NEW STUDENT BRAND: Ashake FreshCraves ---
+    {
+        id: 'ashake-freshcraves',
+        name: 'Ashake FreshCraves',
+        tagline: 'Student-owned – Snacks & More',
+        location: 'Alhikmah University',
+        deliveryTime: '20-30 minutes',
+        badges: ['🏆 Student Brand', '🍟 Plantain Chips', '🎓 Student Favorite'],
+        isStudentBrand: true,
+        menu: [
+            { id: 2400, name: 'Plantain Chips', description: 'Crispy plantain chips', price: 3000, category: 'snacks' },
+            { id: 2401, name: 'Zobo', description: 'Chilled zobo drink', price: 1000, category: 'drinks' },
+            { id: 2402, name: 'Spicy Ponmo', description: 'Spicy cow skin delicacy', price: 2000, category: 'proteins' },
+            { id: 2403, name: 'Spicy Gizzard', description: 'Spicy grilled gizzard', price: 5000, category: 'proteins' }
+        ]
     }
 ];
 
@@ -792,7 +833,7 @@ function loadRestaurants() {
     
     const statElements = document.querySelectorAll('.stat-number');
     if (statElements[0]) {
-        statElements[0].textContent = restaurants.length; // 15 now
+        statElements[0].textContent = restaurants.length; // 17 now
     }
     
     restaurantsContainer.innerHTML = restaurants.map(restaurant => {
@@ -877,5 +918,7 @@ function getRestaurantIcon(name) {
     if (name.includes('ICEWAVE')) return '☕';
     if (name.includes('Barrys Bliss')) return '🥛';
     if (name.includes('Chef_Dii')) return '🍛';
+    if (name.includes('sip with me')) return '🥛';
+    if (name.includes('Ashake FreshCraves')) return '🍟';
     return '🍽️';
 }
