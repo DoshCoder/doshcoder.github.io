@@ -773,98 +773,95 @@ const restaurants = [
             { id: 2210, name: 'Cake parfait', description: 'Cake parfait dessert', price: 2500, category: 'desserts' }
         ]
     },
-    // ===== NEW STUDENT-OWNED BRANDS =====
+    // ========== NEW RESTAURANTS ADDED BELOW ==========
     {
         id: 'tifeys-delicacy',
         name: 'Tifey\'s Delicacy',
-        tagline: 'Student-owned – Authentic Nigerian dishes',
+        tagline: 'Delicious Home Meals & More',
         location: 'Near Alhikmah University, Ilorin',
-        deliveryTime: '25-40 minutes',
-        badges: ['🏆 Student Brand', '🍛 Rice', '🥩 Proteins', '🎓 Student Favorite'],
-        isStudentBrand: true,
+        deliveryTime: '30-45 minutes',
+        badges: ['🏆 Certified', '🍛 Rice', '🥘 Soups', '🎓 Student Favorite'],
         menu: [
-            { id: 2211, name: 'Smokey Jollof (per scoop)', description: 'One scoop of smokey jollof rice', price: 500, category: 'rice' },
-            { id: 2212, name: 'Plate of Jollof Rice', description: 'Full plate of jollof rice', price: 1500, category: 'rice' },
-            { id: 2213, name: 'Plate of Fried Rice', description: 'Full plate of fried rice', price: 1500, category: 'rice' },
-            { id: 2214, name: 'Plate of Rice & Beans', description: 'Rice and beans combo', price: 1200, category: 'rice-beans' },
-            { id: 2215, name: 'Plate of Beans & Stew', description: 'Beans served with stew', price: 800, category: 'beans' },
-            { id: 2216, name: 'Plate of Noodles & Egg', description: 'Noodles with egg', price: 2500, category: 'noodles' },
-            { id: 2217, name: 'Plate of Stir Fry Spaghetti', description: 'Stir fry spaghetti', price: 2000, category: 'pasta' },
-            { id: 2218, name: 'Plate of White Spaghetti', description: 'Plain white spaghetti with sauce', price: 1500, category: 'pasta' },
-            { id: 2219, name: 'Plate of Native Rice', description: 'Traditional native rice', price: 1500, category: 'rice' },
-            { id: 2220, name: 'Plate of Moimoi', description: 'Moin moin (bean pudding) – per plate', price: 400, category: 'snacks' },
-            { id: 2221, name: 'Plate of Porridge', description: 'Yam or beans porridge', price: 2200, category: 'porridge' },
-            { id: 2222, name: 'Chicken', description: 'Chicken protein serving', price: 2000, category: 'proteins' },
-            { id: 2223, name: 'Turkey', description: 'Turkey protein serving', price: 4000, category: 'proteins' },
-            { id: 2224, name: 'Hake Fish', description: 'Hake fish serving', price: 2300, category: 'proteins' },
-            { id: 2225, name: 'Beef', description: 'Beef protein serving (per piece)', price: 300, category: 'proteins' },
-            { id: 2226, name: 'Egg', description: 'Fried or boiled egg', price: 300, category: 'proteins' },
-            { id: 2227, name: 'Plantain', description: 'Fried plantain serving', price: 300, category: 'sides' },
-            { id: 2228, name: 'Egusi Soup', description: 'Melon seed soup', price: 300, category: 'soups' },
-            { id: 2229, name: 'Eforiro Soup', description: 'Vegetable soup', price: 300, category: 'soups' },
-            { id: 2230, name: 'Ogbona Soup', description: 'Ogbono soup', price: 300, category: 'soups' },
-            { id: 2231, name: 'Ewedu Soup', description: 'Jute leaf soup – free with swallow', price: 0, category: 'soups' },
-            { id: 2232, name: 'Okro Soup', description: 'Okra soup – free with swallow', price: 0, category: 'soups' }
+            { id: 2300, name: 'Smokey Jollof (per scoop)', description: 'Smokey jollof rice per scoop', price: 500, category: 'rice' },
+            { id: 2301, name: 'Plate of Jollof Rice', description: 'Full plate of jollof rice', price: 1500, category: 'rice' },
+            { id: 2302, name: 'Plate of Fried Rice', description: 'Full plate of fried rice', price: 1500, category: 'rice' },
+            { id: 2303, name: 'Plate of Rice & Beans', description: 'Plate of rice and beans', price: 1200, category: 'rice-beans' },
+            { id: 2304, name: 'Plate of Beans & Stew', description: 'Beans served with stew', price: 800, category: 'beans' },
+            { id: 2305, name: 'Plate of Noodles & Egg', description: 'Noodles with egg', price: 2500, category: 'noodles' },
+            { id: 2306, name: 'Plate of Stir Fry Spaghetti', description: 'Stir fry spaghetti', price: 2000, category: 'pasta' },
+            { id: 2307, name: 'Plate of White Spaghetti', description: 'Plain white spaghetti', price: 1500, category: 'pasta' },
+            { id: 2308, name: 'Plate of Native Rice', description: 'Native rice delicacy', price: 1500, category: 'rice' },
+            { id: 2309, name: 'Plate of Moimoi', description: 'Moin-moin (bean pudding)', price: 400, category: 'snacks' },
+            { id: 2310, name: 'Plate of Porridge', description: 'Yam or beans porridge', price: 2200, category: 'porridge' },
+            { id: 2311, name: 'Chicken (protein)', description: 'Chicken protein', price: 2000, category: 'proteins' },
+            { id: 2312, name: 'Turkey (protein)', description: 'Turkey protein', price: 4000, category: 'proteins' },
+            { id: 2313, name: 'Hake (protein)', description: 'Hake fish', price: 2300, category: 'proteins' },
+            { id: 2314, name: 'Beef (protein)', description: 'Beef protein', price: 300, category: 'proteins' },
+            { id: 2315, name: 'Egg (protein)', description: 'Egg', price: 300, category: 'proteins' },
+            { id: 2316, name: 'Plantain (protein)', description: 'Fried plantain', price: 300, category: 'proteins' },
+            { id: 2317, name: 'Egusi Soup', description: 'Melon seed soup', price: 300, category: 'soups' },
+            { id: 2318, name: 'Eforiro Soup', description: 'Vegetable soup', price: 300, category: 'soups' },
+            { id: 2319, name: 'Ogbona Soup', description: 'Ogbono soup', price: 300, category: 'soups' },
+            { id: 2320, name: 'Ewedu Soup', description: 'Jute leaf soup (free)', price: 0, category: 'soups' },
+            { id: 2321, name: 'Okro Soup', description: 'Okra soup (free)', price: 0, category: 'soups' }
         ]
     },
     {
         id: 'mu-series-events',
         name: 'Mu_Series Events',
-        tagline: 'Student-owned – Refreshing drinks for every occasion',
-        location: 'Alhikmah University',
-        deliveryTime: '20-30 minutes',
-        badges: ['🏆 Student Brand', '🥤 Drinks', '🎓 Student Favorite'],
-        isStudentBrand: true,
+        tagline: 'Refreshing Drinks & More',
+        location: 'Near Alhikmah University, Ilorin',
+        deliveryTime: '20-35 minutes',
+        badges: ['🏆 Certified', '🥤 Drinks', '🎓 Student Favorite'],
         menu: [
-            { id: 2233, name: 'Kunu Aya (25cl)', description: 'Tigernut drink – 25cl', price: 800, category: 'drinks' },
-            { id: 2234, name: 'Kunu Aya (50cl)', description: 'Tigernut drink – 50cl', price: 1500, category: 'drinks' },
-            { id: 2235, name: 'Kunu Aya (1 litre)', description: 'Tigernut drink – 1 litre', price: 3000, category: 'drinks' },
-            { id: 2236, name: 'Special Kunu Aya (25cl)', description: 'VVIP tigernut drink – 25cl', price: 1000, category: 'drinks' },
-            { id: 2237, name: 'Special Kunu Aya (50cl)', description: 'VVIP tigernut drink – 50cl', price: 2000, category: 'drinks' },
-            { id: 2238, name: 'Special Kunu Aya (1 litre)', description: 'VVIP tigernut drink – 1 litre', price: 4000, category: 'drinks' },
-            { id: 2239, name: 'Fruity Zobo (35cl)', description: 'Fruity zobo drink – 35cl', price: 600, category: 'drinks' },
-            { id: 2240, name: 'Fruity Zobo (50cl)', description: 'Fruity zobo drink – 50cl', price: 1000, category: 'drinks' },
-            { id: 2241, name: 'Fruity Zobo (1 litre)', description: 'Fruity zobo drink – 1 litre', price: 2000, category: 'drinks' },
-            { id: 2242, name: 'Fruity Zobo (5 litres)', description: 'Fruity zobo drink – 5 litres', price: 10000, category: 'drinks' }
+            { id: 2400, name: '25CL Kunu Aya', description: 'Tiger nut drink – 25cl', price: 800, category: 'drinks' },
+            { id: 2401, name: '50CL Kunu Aya', description: 'Tiger nut drink – 50cl', price: 1500, category: 'drinks' },
+            { id: 2402, name: '1 Litre Kunu Aya', description: 'Tiger nut drink – 1 litre', price: 3000, category: 'drinks' },
+            { id: 2403, name: '25CL Special Kunu Aya (VVIP)', description: 'Premium tiger nut drink – 25cl', price: 1000, category: 'drinks' },
+            { id: 2404, name: '50CL Special Kunu Aya (VVIP)', description: 'Premium tiger nut drink – 50cl', price: 2000, category: 'drinks' },
+            { id: 2405, name: '1 Litre Special Kunu Aya (VVIP)', description: 'Premium tiger nut drink – 1 litre', price: 4000, category: 'drinks' },
+            { id: 2406, name: '35CL Fruity Zobo', description: 'Fruity zobo drink – 35cl', price: 600, category: 'drinks' },
+            { id: 2407, name: '50CL Fruity Zobo', description: 'Fruity zobo drink – 50cl', price: 1000, category: 'drinks' },
+            { id: 2408, name: '1 Litre Fruity Zobo', description: 'Fruity zobo drink – 1 litre', price: 2000, category: 'drinks' },
+            { id: 2409, name: '5 Litre Fruity Zobo', description: 'Fruity zobo drink – 5 litres', price: 10000, category: 'drinks' }
         ]
     },
     {
         id: 'sip-with-me',
         name: 'sip with me',
-        tagline: 'Student-owned – Yoghurt, parfait & more',
-        location: 'Alhikmah University',
+        tagline: 'Yoghurt & Fruit Delights',
+        location: 'Near Alhikmah University, Ilorin',
         deliveryTime: '20-30 minutes',
-        badges: ['🏆 Student Brand', '🥛 Yoghurt', '🍧 Parfait', '🎓 Student Favorite'],
-        isStudentBrand: true,
+        badges: ['🏆 Certified', '🥛 Yogurt', '🍧 Parfait', '🎓 Student Favorite'],
         menu: [
-            { id: 2243, name: 'Plain Yoghurt (Small)', description: 'Small size plain yoghurt', price: 1800, category: 'yogurt' },
-            { id: 2244, name: 'Plain Yoghurt (Medium)', description: 'Medium size plain yoghurt', price: 2500, category: 'yogurt' },
-            { id: 2245, name: 'Plain Yoghurt (Big)', description: 'Big size plain yoghurt', price: 3500, category: 'yogurt' },
-            { id: 2246, name: 'Infused Strawberry Yoghurt (Small)', description: 'Small strawberry infused yoghurt', price: 2000, category: 'yogurt' },
-            { id: 2247, name: 'Infused Strawberry Yoghurt (Medium)', description: 'Medium strawberry infused yoghurt', price: 2800, category: 'yogurt' },
-            { id: 2248, name: 'Infused Strawberry Yoghurt (Big)', description: 'Big strawberry infused yoghurt', price: 3800, category: 'yogurt' },
-            { id: 2249, name: 'Yoghurt Parfait (350ml)', description: '350ml yoghurt parfait', price: 3500, category: 'parfait' },
-            { id: 2250, name: 'Yoghurt Parfait (500ml)', description: '500ml yoghurt parfait', price: 4800, category: 'parfait' },
-            { id: 2251, name: 'Fruit Salad (Small)', description: 'Small fruit salad', price: 1000, category: 'fruit' },
-            { id: 2252, name: 'Fruit Salad (Big)', description: 'Big fruit salad', price: 1500, category: 'fruit' },
-            { id: 2253, name: 'Zobo (Small)', description: 'Small zobo drink', price: 800, category: 'drinks' },
-            { id: 2254, name: 'Zobo (Big)', description: 'Big zobo drink', price: 1200, category: 'drinks' },
-            { id: 2255, name: 'Extra Toppings', description: 'Additional toppings for any item', price: 1000, category: 'toppings' }
+            { id: 2500, name: 'Plain Yoghurt (Big)', description: 'Big size plain yoghurt', price: 3500, category: 'yogurt' },
+            { id: 2501, name: 'Plain Yoghurt (Medium)', description: 'Medium size plain yoghurt', price: 2500, category: 'yogurt' },
+            { id: 2502, name: 'Plain Yoghurt (Small)', description: 'Small size plain yoghurt', price: 1800, category: 'yogurt' },
+            { id: 2503, name: 'Infused Strawberry Yoghurt (Big)', description: 'Big size strawberry infused yoghurt', price: 3800, category: 'yogurt' },
+            { id: 2504, name: 'Infused Strawberry Yoghurt (Medium)', description: 'Medium size strawberry infused yoghurt', price: 2800, category: 'yogurt' },
+            { id: 2505, name: 'Infused Strawberry Yoghurt (Small)', description: 'Small size strawberry infused yoghurt', price: 2000, category: 'yogurt' },
+            { id: 2506, name: 'Yoghurt Parfait (350ml)', description: 'Parfait 350ml', price: 3500, category: 'parfait' },
+            { id: 2507, name: 'Yoghurt Parfait (500ml)', description: 'Parfait 500ml', price: 4800, category: 'parfait' },
+            { id: 2508, name: 'Fruit Salad (Big)', description: 'Big fruit salad', price: 1500, category: 'desserts' },
+            { id: 2509, name: 'Fruit Salad (Small)', description: 'Small fruit salad', price: 1000, category: 'desserts' },
+            { id: 2510, name: 'Zobo (Big)', description: 'Big zobo drink', price: 1200, category: 'drinks' },
+            { id: 2511, name: 'Zobo (Small)', description: 'Small zobo drink', price: 800, category: 'drinks' },
+            { id: 2512, name: 'Extra Toppings', description: 'Extra toppings for customization', price: 1000, category: 'extras' }
         ]
     },
     {
         id: 'ashake-freshcraves',
         name: 'Ashake FreshCraves',
-        tagline: 'Student-owned – Snacks & small chops',
+        tagline: 'Student-owned – Snacks & Drinks',
         location: 'Alhikmah University',
         deliveryTime: '20-30 minutes',
         badges: ['🏆 Student Brand', '🍟 Snacks', '🎓 Student Favorite'],
         isStudentBrand: true,
         menu: [
-            { id: 2256, name: 'Plantain Chips', description: 'Crispy plantain chips', price: 3000, category: 'snacks' },
-            { id: 2257, name: 'Zobo', description: 'Zobo drink', price: 1000, category: 'drinks' },
-            { id: 2258, name: 'Spicy Ponmo', description: 'Spicy cow skin', price: 2000, category: 'snacks' },
-            { id: 2259, name: 'Spicy Gizzard', description: 'Spicy grilled gizzard', price: 5000, category: 'snacks' }
+            { id: 2600, name: 'Plantain Chips', description: 'Crispy plantain chips', price: 3000, category: 'snacks' },
+            { id: 2601, name: 'Zobo', description: 'Hibiscus drink', price: 1000, category: 'drinks' },
+            { id: 2602, name: 'Spicy Ponmo', description: 'Spicy cow skin', price: 2000, category: 'snacks' },
+            { id: 2603, name: 'Spicy Gizzard', description: 'Spicy gizzard', price: 5000, category: 'proteins' }
         ]
     }
 ];
@@ -876,7 +873,7 @@ function loadRestaurants() {
     
     const statElements = document.querySelectorAll('.stat-number');
     if (statElements[0]) {
-        statElements[0].textContent = restaurants.length; // 19 now
+        statElements[0].textContent = restaurants.length; // 29 now
     }
     
     restaurantsContainer.innerHTML = restaurants.map(restaurant => {
@@ -961,7 +958,7 @@ function getRestaurantIcon(name) {
     if (name.includes('ICEWAVE')) return '☕';
     if (name.includes('Barrys Bliss')) return '🥛';
     if (name.includes('Chef_Dii')) return '🍛';
-    if (name.includes('Tifey')) return '🍛';
+    if (name.includes('Tifey')) return '🍚';
     if (name.includes('Mu_Series')) return '🥤';
     if (name.includes('sip with me')) return '🥛';
     if (name.includes('Ashake')) return '🍟';
