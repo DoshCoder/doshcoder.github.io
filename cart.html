@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - TapDosh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍽️</span>
+                <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#restaurants">Restaurants</a>
+                <a href="cart.html" class="active cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-header">
+                <h1>Your Order Cart</h1>
+                <p>Review your items before proceeding to checkout</p>
+            </div>
+            
+            <div class="cart-container">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add items from our certified restaurants</p>
+                        <a href="index.html#restaurants" class="btn btn-primary">
+                            <i class="fas fa-utensils"></i> Browse Restaurants
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">₦0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tap Fee</span>
+                                <span id="tapFee">Will be determined by number of take-away/order wraps</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="totalAmount">₦0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="restaurant-info" id="restaurantInfo" style="display: none;">
+                            <h4>Ordering from:</h4>
+                            <p id="restaurantName"></p>
+                            <small id="restaurantAddress"></small>
+                        </div>
+                        
+                        <!-- ADDED: TapDosh hours note -->
+                        <p class="delivery-note">
+                            <i class="fas fa-clock"></i> Note: TapDosh operates from 10:00 AM to 10:00 PM daily
+                        </p>
+                        
+                        <p class="delivery-note">
+                            <i class="fas fa-info-circle"></i> Delivery fee will be determined by your location and communicated via WhatsApp
+                        </p>
+                        
+                        <p class="delivery-note">
+                            <i class="fas fa-info-circle"></i> Tap fee will be determined by number of take-away/order wraps
+                        </p>
+                        
+                        <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>
+                            <i class="fab fa-whatsapp"></i> Continue Order on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complete Your Order</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="fullName">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" id="fullName" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deliveryAddress">
+                            <i class="fas fa-map-marker-alt"></i> Delivery Address
+                        </label>
+                        <textarea id="deliveryAddress" required placeholder="Enter your complete delivery address including landmarks"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phoneNumber">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <input type="tel" id="phoneNumber" required placeholder="0801 234 5678 (11 digits)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialInstructions">
+                            <i class="fas fa-sticky-note"></i> Special Instructions (Optional)
+                        </label>
+                        <textarea id="specialInstructions" placeholder="Any special requests or instructions for your order"></textarea>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h4>Order Summary</h4>
+                        <div id="modalOrderSummary">
+                            <!-- Order summary will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <p class="note">
+                        <i class="fas fa-info-circle"></i> Your delivery fee will be determined by your location. Our representative will respond with the exact delivery fee.
+                    </p>
+                    
+                    <p class="note">
+                        <i class="fas fa-info-circle"></i> Your tap fee will be determined by number of take-away/order wraps. Our representative will respond with the exact tap fee.
+                    </p>
+                    
+                    <button type="submit" class="btn btn-whatsapp btn-block">
+                        <i class="fab fa-whatsapp"></i> Continue to WhatsApp
+                    </button>
+                    
+                    <p class="note">
+                        <i class="fas fa-exclamation-triangle"></i> You'll be redirected to WhatsApp to complete your order with our TapDosh representative
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/order.js"></script>
+    <script src="js/whatsapp-float.js"></script>
+    <script>
+        // Update copyright year
+        const yearElements = document.querySelectorAll('#currentYear');
+        yearElements.forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <span class="logo-icon">🍽️</span>
+                        <span class="logo-text">Tap<span class="logo-accent">Dosh</span></span>
+                    </div>
+                    <p class="footer-tagline">Ilorin's Trusted Food Concierge</p>
+                    <p>Fast, student-friendly ordering with WhatsApp support and certified restaurant options.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-house"></i> Home</a></li>
+                        <li><a href="index.html#restaurants"><i class="fas fa-utensils"></i> Restaurants</a></li>
+                        <li><a href="cart.html"><i class="fas fa-cart-shopping"></i> Cart</a></li>
+                        <li><a href="https://wa.me/2349050270392" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="acceptable-use-policy/"><i class="fas fa-shield-halved"></i> Acceptable Use Policy</a></li>
+                        <li><a href="refund-policy/"><i class="fas fa-receipt"></i> Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +234 905 027 0392</li>
+                        <li><i class="fas fa-clock"></i> 10:00 AM - 10:00 PM</li>
+                        <li><i class="fas fa-location-dot"></i> Alhikmah University Area</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> TapDosh. All rights reserved. | Tested by Us, Trusted by You</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.querySelectorAll('#currentYear').forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
